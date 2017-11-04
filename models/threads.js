@@ -16,6 +16,10 @@ module.exports = function(sequelize, DataTypes) {
 				}
 			}
 		},
+		forum_uuid: {
+			type: DataTypes.STRING.UUID,
+			allowNull: false
+		},
 		created_By: {
 			type: DataTypes.STRING,
 			allowNull: false,
