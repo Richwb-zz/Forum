@@ -33,6 +33,6 @@ module.exports = function(sequelize, DataTypes) {
 		}
 	});
 
-	thread.sync();
-	return thread;
+	posts.sync();
+	return posts;
 }
