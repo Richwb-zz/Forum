@@ -1,5 +1,18 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1= MassiveMultiUserMiscellaneousMumbling
+  p Welcome to #{MMMM}
+
+    #{MMMM}
+    p Forums
+    
+    ul
+        each val in openForums
+            li= val[0] + " " + val[1]
+
+    p Threads
+    ul
+        each val in openThreads
+            li= li= val[0] + " " + val[1]
+            
