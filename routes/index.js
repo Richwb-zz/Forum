@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var db = require("../models");
+var db = require("../models/index.js");
+var app = express();
 
 // Dependencies
 // =============================================================
@@ -37,7 +38,7 @@ app.get("/:forum/:thread/:post", function(req, res) {
 
 // authors route loads author-manager.html
 app.get("/:profile", function(req, res) {
-	res.render("profile", , { profile: req.params.profile });
+	res.render("profile", { profile: req.params.profile });
 });
 
 
