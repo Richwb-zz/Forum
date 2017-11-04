@@ -1,0 +1,30 @@
+Massive Multiuser Miscellaneous Mumbling!
+
+Routes:
+=========================================
+Forum:
+
+	. Log In
+
+	. View Profile
+
+	. *Search*
+		. Find User
+		. Find Thread
+		. Find Post
+-----------------------------------------
+Thread:
+
+	. View Thread
+
+	. New Thread
+	. Delete Thread
+	. Update Thread
+-----------------------------------------
+Post:
+
+	. New Post
+	. Delete Post
+	. Edit Post
+-----------------------------------------
+
