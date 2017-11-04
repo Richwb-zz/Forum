@@ -11,26 +11,33 @@ var path = require("path");
 
 // index route loads view.html
 app.get("/", function(req, res) {
-	res.sendFile(path.join(__dirname, "../public/index.html"));
+	res.render('index');
 });
 
 // cms route loads cms.html
-app.get("/forum", function(req, res) {
-	res.sendFile(path.join(__dirname, "../public/forum.html"));
+app.get("/:forum", function(req, res) {
+	res.render("forum", { forum: req.params.forum });
 });
 
 // blog route loads blog.html
-app.get("/thread", function(req, res) {
-	res.sendFile(path.join(__dirname, "../public/thread.html"));
+app.get("/:forum/:thread", function(req, res) {
+	res.render("thread", {
+			forum: req.params.forum,
+			thread: req.params.thread
+		});
 });
 
-app.get("/post", function(req, res) {
-	res.sendFile(path.join(__dirname, "../public/post.html"));
+app.get("/:forum/:thread/:post", function(req, res) {
+	res.render("post", {
+			forum: req.params.forum,
+			thread: req.params.thread,
+			post: req.params.post
+		});
 });
 
 // authors route loads author-manager.html
-app.get("/profile", function(req, res) {
-	res.sendFile(path.join(__dirname, "../public/profile.html"));
+app.get("/:profile", function(req, res) {
+	res.render("profile", , { profile: req.params.profile });
 });
 
 

@@ -3,29 +3,44 @@ var router = express.Router();
 var db = require("../models");
 
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('Go back to Homepage');
+// /* GET users listing. */
+// router.get('/', function(req, res, next) {
+//   res.send('respond with a resource');
+// });
+
+router.get("/api/forum", function(req, res) {
+	db.Forum.findAll({
+		include: [db.Thread],
+	}).then(function(dbForum) {
+		res.json(dbForum);
+	});
 });
 
-router.get('/login/', function(req, res, next) {
-  res.send('go to login');
+router.get("/api/forum/:id", function(req, res) {
+	db.Forum.findOne({
+		include: [db.Thread],
+		where: {
+			id: req.params.id
+		}
+	}).then(function(dbForum) {
+		res.json(dbForum);
+	});
 });
 
-router.get('/new/:thread', function(req, res, next) {
-  res.send('New Thread name = param');
+router.post("/api/forum", function(req, res) {
+	db.Forum.create(req.body).then(function(dbForum) {
+		res.json(dbForum);
+	});
 });
 
-router.get('/edit/:thread', function(req, res, next) {
-  res.send('Update Thread name = param');
-});
-
-router.get('/kill/:thread', function(req, res, next) {
-  res.send('Destroy Thread name = param');
-});
-
-router.get('/view/:thread', function(req, res, next) {
-  res.send('Look at thread name = param');
+router.delete("/api/forum/:id", function(req, res) {
+	db.Forum.destroy({
+		where: {
+			id: req.params.id
+		}
+	}).then(function(dbForum) {
+		res.json(dbForum);
+	});
 });
 
 module.exports = router;

@@ -3,20 +3,21 @@ var router = express.Router();
 var db = require("../models");
 
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+// /* GET users listing. */
+// router.get('/', function(req, res, next) {
+//   res.send('respond with a resource');
+// });
 
-app.get("/api/thread", function(req, res) {
+router.get("/:forum/:thread", function(req, res) {
 	db.Thread.findAll({
+		//where{forum:this.forum}
 		include: [db.Post],
 	}).then(function(dbThread) {
 		res.json(dbThread);
 	});
 });
 
-app.get("/api/thread/:id", function(req, res) {
+router.get("/api/thread/:id", function(req, res) {
 	db.Thread.findOne({
 		include: [db.Post],
 		where: {
@@ -27,13 +28,13 @@ app.get("/api/thread/:id", function(req, res) {
 	});
 });
 
-app.post("/api/thread", function(req, res) {
+router.post("/api/thread", function(req, res) {
 	db.Thread.create(req.body).then(function(dbThread) {
 		res.json(dbThread);
 	});
 });
 
-app.delete("/api/thread/:id", function(req, res) {
+router.delete("/api/thread/:id", function(req, res) {
 	db.Thread.destroy({
 		where: {
 			id: req.params.id
