@@ -17,7 +17,7 @@ module.exports = function(sequelize, DataTypes) {
 			}
 		},
 		forum_uuid: {
-			type: DataTypes.STRING.UUID,
+			type: DataTypes.UUID,
 			defaultValue: DataTypes.UUIDV1,
 			allowNull: false
 		},
