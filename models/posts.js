@@ -6,12 +6,19 @@ module.exports = function(sequelize, DataTypes) {
     		primaryKey: true,
 			allowNull: false,
 		},
-		user_uuid: {
+		created_by: {
 			type: DataTypes.UUID,
+			defaultValue: DataTypes.UUIDV1,
+			allowNull: false
+		},
+		edited_by: {
+			type: DataTypes.UUID,
+			defaultValue: DataTypes.UUIDV1,
 			allowNull: false
 		},
 		thread_uuid: {
 			type: DataTypes.UUID,
+			defaultValue: DataTypes.UUIDV1,
 			allowNull: false
 		},
 		text: {

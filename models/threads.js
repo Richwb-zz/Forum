@@ -11,49 +11,30 @@ module.exports = function(sequelize, DataTypes) {
 			allowNull: false,
 			validate: {
 				len: {
-					args: [1, 100],
-					msg: 'Thread Name length must be between 1 and 100 characters'
+					args: [10, 100],
+					msg: 'Thread Name length must be between 10 and 100 characters'
 				}
 			}
 		},
 		forum_uuid: {
 			type: DataTypes.STRING.UUID,
+			defaultValue: DataTypes.UUIDV1,
 			allowNull: false
 		},
 		created_By: {
-			type: DataTypes.STRING,
-			allowNull: false,
-			validate: {
-				len: {
-					args: [1, 20],
-					msg: 'User Name length must be between 1 and 20 characters'
-				}
-			}
+			type: DataTypes.UUID,
+			defaultValue: DataTypes.UUIDV1,
+			allowNull: false
 		},
 		last_poster: {
-			type: DataTypes.STRING,
-			allowNull: false,
-			validate: {
-				len: {
-					args: [1, 20],
-					msg: 'last poster length must be between 1 and 20 characters'
-				}
-			}
+			type: DataTypes.UUID,
+			defaultValue: DataTypes.UUIDV1,
+			allowNull: false
 		},
 		last_post_date: {
 			type: DataTypes.DATE,
 			allowNull: false
 		},
-		Email: {
-			type: DataTypes.STRING,
-			allowNull: false,
-			validate: {
-				len: {
-					args: [1, 50],
-					msg: 'Last Name length must be between 1 and 25 characters'
-				}
-			}
-		}
 	});
 
 	thread.sync();

@@ -55,7 +55,7 @@ module.exports = function(sequelize, DataTypes) {
 					msg: 'Last Name length must be between 1 and 25 characters'
 				}
 			}
-		},
+		}
 	});
 
 	forum.sync();
