@@ -2,7 +2,7 @@ module.exports = function(sequelize, DataTypes) {
 	const forum = sequelize.define('forum', {
 		uuid: {
 			type 	: DataTypes.UUID,
-			defaultValue: DataTypes.UUIDV1,
+			defaultValue: DataTypes.UUIDV4,
     		primaryKey: true,
 			allowNull: false,
 		},
@@ -17,7 +17,7 @@ module.exports = function(sequelize, DataTypes) {
 			}
 		},
 		password: {
-			type: DataTypes.STRING,
+			type: DataTypes.STRING(25),
 			allowNull: false,
 			validate: {
 				len: {
@@ -27,7 +27,7 @@ module.exports = function(sequelize, DataTypes) {
 			}
 		},
 		Firstname: {
-			type: DataTypes.STRING,
+			type: DataTypes.STRING(25),
 			allowNull: false,
 			validate: {
 				len: {
@@ -37,7 +37,7 @@ module.exports = function(sequelize, DataTypes) {
 			}
 		},
 		Lastname: {
-			type: DataTypes.STRING,
+			type: DataTypes.STRING(25),
 			allowNull: false,
 			validate: {
 				len: {
@@ -47,7 +47,7 @@ module.exports = function(sequelize, DataTypes) {
 			}
 		},
 		Email: {
-			type: DataTypes.STRING,
+			type: DataTypes.STRING(50),
 			allowNull: false,
 			validate: {
 				len: {
@@ -58,6 +58,6 @@ module.exports = function(sequelize, DataTypes) {
 		}
 	});
 
-	forum.sync();
-	return forum;
+	users.sync();
+	return users;
 }
