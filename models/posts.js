@@ -1,10 +1,14 @@
 module.exports = function(sequelize, DataTypes) {
 	const posts= sequelize.define('posts', {
 		uuid: {
-			type 	: DataTypes.UUID,
+			type: DataTypes.UUID,
 			defaultValue: DataTypes.UUIDV1,
     		primaryKey: true,
 			allowNull: false,
+		},
+		post_id: {
+			type: DataTypes.TINYINT(6),
+			allowNull: false
 		},
 		created_by: {
 			type: DataTypes.UUID,
