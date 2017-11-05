@@ -1,0 +1,11 @@
+block content
+
+	each thread in threads
+		div(class="thread")
+			div(class="thread-title")
+				a(href=thread[threadPath]) thread[threadName]
+
+			div(class="last-post")
+				span lastpost: thread[postDate] by: 
+				a(href=thread[profileUrl]) #{thread[profileName]}
+				span #{post[postDate]}
