@@ -1,18 +1,27 @@
 extends layout
 
 block content
-  h1= MassiveMultiUserMiscellaneousMumbling
-  p Welcome to #{MMMM}
+	h1 Massive Multi-User Miscellaneous Mumbling
+	p Welcome to #{MMMM}
 
-    #{MMMM}
-    p Forums
-    
-    ul
-        each val in openForums
-            li= val[0] + " " + val[1]
+	if user
+		a(href=userUrl) User
+		a(href="/signout") Sign Out
+	else
+		form(name="login",method="POST",action="/login")
+			input(id="login-username",name="login-password",type="text",value="")
+			input(id="login-password",name="login-password",type="password",value="")
+			input(type="submit",value="Login")
 
-    p Threads
-    ul
-        each val in openThreads
-            li= li= val[0] + " " + val[1]
-            
+	each forum in forums
+		div(class="forum")
+			div(class="forum-title")
+				a(href=forum[forumPath]) forum[forumName]
+
+			div(class="forum-description")
+				#{forum[forumDescription]}
+
+			div(class="last-post")
+				a(href=forum[threadPath]) #{forum[threadName]}
+				a(href=forum[profileUrl]) #{forum[profileName]}
+				span #{forum[postDate]}
