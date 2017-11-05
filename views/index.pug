@@ -1,17 +1,4 @@
-extends layout
-
 block content
-	h1 Massive Multi-User Miscellaneous Mumbling
-	p Welcome to #{MMMM}
-
-	if user
-		a(href=userUrl) User
-		a(href="/signout") Sign Out
-	else
-		form(name="login",method="POST",action="/login")
-			input(id="login-username",name="login-password",type="text",value="")
-			input(id="login-password",name="login-password",type="password",value="")
-			input(type="submit",value="Login")
 
 	each forum in forums
 		div(class="forum")
