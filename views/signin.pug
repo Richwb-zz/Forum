@@ -6,6 +6,6 @@ if user
 	a(href="/signout") Sign Out
 else
 	form(name="login",method="POST",action="/login")
-		input(id="login-username",name="login-username",type="text",value="")
-		input(id="login-password",name="login-password",type="password",value="")
+		input(id="login-username",name="login-username",type="text",value="",required="required")
+		input(id="login-password",name="login-password",type="password",value="",required="required")
 		input(type="submit",value="Login")
