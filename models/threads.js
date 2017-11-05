@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
 			allowNull: false,
 		},
 		thread_name: {
-			type: DataTypes.STRING,
+			type: DataTypes.STRING(100),
 			allowNull: false,
 			validate: {
 				len: {

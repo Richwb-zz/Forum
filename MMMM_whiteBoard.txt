@@ -28,3 +28,21 @@ Post:
 	. Edit Post
 -----------------------------------------
 
+
+Variables:
+========================================
+
+index page
+
+	User = logged in user
+	userUrl = Profile url
+
+	forums array
+		forumPath 			= forum url path
+		forumName 			= forum name
+		forumDescription 	= forum description
+		threadPath 			= last post path
+		threadName 			= last post name
+		postDate 			= post date
+		profileUrl 			= user profile url
+		profileName 		= profile name

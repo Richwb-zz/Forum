@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
 			allowNull: false
 		},
 		post_count: {
-			type: DataTypes.TINYINT,
+			type: DataTypes.TINYINT(10),
 			allowNull: false,
 			defaultValue: 0
 		},
