@@ -45,4 +45,28 @@ index page
 		threadName 			= last post name
 		postDate 			= post date
 		profileUrl 			= user profile url
-		profileName 		= profile name
+		profileName 		= user name of poster
+
+forum page
+	
+	threads array
+		threadPath	= thread URL
+		threadName	= Name of thread
+		postDate		= Date of latest post
+		profileUrl	= url to profile
+		profileName = user name of poster
+
+thread page
+	posts array
+		postNum = post number
+		posterUN = poster username
+		numofPost = users post count
+		content = post text
+		createDate = date post was made
+		editDate = date post edited (do not include if blank)
+
+signin POST
+	goes to /login
+	passes
+		login-username
+		login-password
