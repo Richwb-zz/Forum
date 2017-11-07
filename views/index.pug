@@ -1,18 +1,14 @@
-extends layout
-
 block content
-  h1= MassiveMultiUserMiscellaneousMumbling
-  p Welcome to #{MMMM}
 
-    #{MMMM}
-    p Forums
-    
-    ul
-        each val in openForums
-            li= val[0] + " " + val[1]
+	each forum in forums
+		div(class="forum")
+			div(class="forum-title")
+				a(href=forum[forumPath]) forum[forumName]
 
-    p Threads
-    ul
-        each val in openThreads
-            li= li= val[0] + " " + val[1]
-            
+			div(class="forum-description")
+				#{forum[forumDescription]}
+
+			div(class="last-post")
+				a(href=forum[threadPath]) #{forum[threadName]}
+				a(href=forum[profileUrl]) #{forum[profileName]}
+				span #{forum[postDate]}

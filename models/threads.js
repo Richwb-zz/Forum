@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
 			allowNull: false,
 		},
 		thread_name: {
-			type: DataTypes.STRING,
+			type: DataTypes.STRING(100),
 			allowNull: false,
 			validate: {
 				len: {
@@ -17,7 +17,7 @@ module.exports = function(sequelize, DataTypes) {
 			}
 		},
 		forum_uuid: {
-			type: DataTypes.STRING.UUID,
+			type: DataTypes.UUID,
 			defaultValue: DataTypes.UUIDV1,
 			allowNull: false
 		},
