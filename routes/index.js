@@ -36,11 +36,7 @@ router.get("/:forum/:thread/:post", function(req, res) {
 });
 
 // authors route loads author-manager.html
-<<<<<<< HEAD
-app.get("/:profile", function(req, res) {
-=======
 router.get("/:profile", function(req, res) {
->>>>>>> e84e0a2caf5ef3384ca670cd76ddc3c3f88fd530
 	res.render("profile", { profile: req.params.profile });
 });
 
