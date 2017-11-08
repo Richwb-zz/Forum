@@ -9,16 +9,16 @@ var db = require("../models");
 // });
 
 router.get("/api/forum", function(req, res) {
-	db.Forum.findAll({
-		include: [db.Thread],
+	db.forum.findAll({
+		include: [db.thread],
 	}).then(function(dbForum) {
 		res.json(dbForum);
 	});
 });
 
 router.get("/api/forum/:id", function(req, res) {
-	db.Forum.findOne({
-		include: [db.Thread],
+	db.forum.findOne({
+		include: [db.thread],
 		where: {
 			id: req.params.id
 		}
@@ -28,13 +28,13 @@ router.get("/api/forum/:id", function(req, res) {
 });
 
 router.post("/api/forum", function(req, res) {
-	db.Forum.create(req.body).then(function(dbForum) {
+	db.forum.create(req.body).then(function(dbForum) {
 		res.json(dbForum);
 	});
 });
 
 router.delete("/api/forum/:id", function(req, res) {
-	db.Forum.destroy({
+	db.forum.destroy({
 		where: {
 			id: req.params.id
 		}
