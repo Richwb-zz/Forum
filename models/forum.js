@@ -1,11 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
 	const forum = sequelize.define('forum', {
-		uuid: {
-			type 	: DataTypes.UUID,
-			defaultValue: DataTypes.UUIDV1,
-    		primaryKey: true,
-			allowNull: false,
-		},
 		forum_name: {
 			type: DataTypes.STRING(50),
 			allowNull: false,
@@ -26,6 +20,15 @@ module.exports = function(sequelize, DataTypes) {
 				}
 			}
 		},
+	},
+	{
+		underscored: true,
+		freezeTableName: true,
+		classMethods: {
+			associate: function(models) {
+				forum.hasMany(models.threads)
+			}
+		}
 	});
 
 	forum.sync();
