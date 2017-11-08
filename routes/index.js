@@ -9,21 +9,18 @@ var path = require("path");
 // Routes
 // =============================================================
 
-// index route loads view.html
 router.get("/", function(req, res) {
 	res.render('index');
 });
 
-// cms route loads cms.html
 router.get("/:forum", function(req, res) {
 	res.render("forum", { forum: req.params.forum });
 });
 
-// blog route loads blog.html
 router.get("/:forum/:thread", function(req, res) {
 	res.render("thread", {
-			forum: req.params.forum,
-			thread: req.params.thread
+			forum_name: req.params.forum,
+			thread_name: req.params.thread
 		});
 });
 

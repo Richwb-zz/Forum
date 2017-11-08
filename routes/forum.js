@@ -14,33 +14,17 @@ router.get("/api/forum", function(req, res) {
 	}).then(function(dbForum) {
 		res.json(dbForum);
 	});
-});
+});// get all forums to display on home page
 
-router.get("/api/forum/:id", function(req, res) {
+router.get("/api/forum/:forum_name", function(req, res) {
 	db.forum.findOne({
 		include: [db.thread],
 		where: {
-			id: req.params.id
+			forum_name: req.params.forum_name
 		}
 	}).then(function(dbForum) {
 		res.json(dbForum);
 	});
-});
-
-router.post("/api/forum", function(req, res) {
-	db.forum.create(req.body).then(function(dbForum) {
-		res.json(dbForum);
-	});
-});
-
-router.delete("/api/forum/:id", function(req, res) {
-	db.forum.destroy({
-		where: {
-			id: req.params.id
-		}
-	}).then(function(dbForum) {
-		res.json(dbForum);
-	});
-});
+});//search for a specific forum
 
 module.exports = router;

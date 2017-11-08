@@ -9,19 +9,17 @@ var db = require("../models");
 // });
 
 router.get("/:forum/:thread", function(req, res) {
-	db.Thread.findAll({
+	db.thread.findAll({
 		//where{forum:this.forum}
-		include: [db.Post],
 	}).then(function(dbThread) {
 		res.json(dbThread);
 	});
 });
 
-router.get("/api/thread/:id", function(req, res) {
-	db.Thread.findOne({
-		include: [db.Post],
+router.get("/api/thread/:thread_name", function(req, res) {
+	db.thread.findOne({
 		where: {
-			id: req.params.id
+			thread_name: req.params.thread_name
 		}
 	}).then(function(dbThread) {
 		res.json(dbThread);
@@ -29,13 +27,13 @@ router.get("/api/thread/:id", function(req, res) {
 });
 
 router.post("/api/thread", function(req, res) {
-	db.Thread.create(req.body).then(function(dbThread) {
+	db.thread.create(req.body).then(function(dbThread) {
 		res.json(dbThread);
 	});
 });
 
 router.delete("/api/thread/:id", function(req, res) {
-	db.Thread.destroy({
+	db.thread.destroy({
 		where: {
 			id: req.params.id
 		}
