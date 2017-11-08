@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-	const threads = sequelize.define('thread', {
+	const threads = sequelize.define('threads', {
 		thread_name: {
 			type: DataTypes.STRING(100),
 			allowNull: false,
@@ -30,7 +30,7 @@ module.exports = function(sequelize, DataTypes) {
 		freezeTableName: true,
 		classMethods: {
 			associate: function(models) {
-				threads.hasMany(models.posts)
+				threads.hasMany(models.posts);
 				threads.belongsTo(models.forum,{
 					foreignKey: {
 						foreignKey: 'forum_id',

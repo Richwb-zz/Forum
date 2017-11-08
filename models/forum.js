@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-	const forums = sequelize.define('forum', {
+	const forums = sequelize.define('forums', {
 		forum_name: {
 			type: DataTypes.STRING(50),
 			allowNull: false,
@@ -26,7 +26,7 @@ module.exports = function(sequelize, DataTypes) {
 		freezeTableName: true,
 		classMethods: {
 			associate: function(models) {
-				forums.hasMany(models.threads)
+				forums.hasMany(models.threads);
 			}
 		}
 	});
