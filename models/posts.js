@@ -14,11 +14,6 @@ module.exports = function(sequelize, DataTypes) {
 			defaultValue: DataTypes.UUIDV1,
 			allowNull: false
 		},
-		thread_uuid: {
-			type: DataTypes.UUID,
-			defaultValue: DataTypes.UUIDV1,
-			allowNull: false
-		},
 		text: {
 			type: DataTypes.TEXT,
 			allowNull: false,
@@ -41,7 +36,7 @@ module.exports = function(sequelize, DataTypes) {
 						allowNull: false
 					}
 				});
-				
+
 				posts.belongsTo(models.users, {
 					foreignKey: {
 						foreignKey: 'User_id',
