@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-	const profile = sequelize.define('profile', {
+	const profiles = sequelize.define('profiles', {
 		uuid: {
 			type 	: DataTypes.UUID,
 			defaultValue: DataTypes.UUIDV1,
@@ -17,6 +17,22 @@ module.exports = function(sequelize, DataTypes) {
 			allowNull: false,
 			defaultValue: 0
 		},
+	}{
+		underscored: true,
+		freezeTableName: true,
+		classMethods: {
+			associate: function(models) {
+				profiles.hasMany(models.threads)
+			}
+		}
+	}{
+		underscored: true,
+		freezeTableName: true,
+		classMethods: {
+			associate: function(models) {
+				profiles.belongTo(models.users);
+			}
+		}
 	});
 
 	profile.sync();
