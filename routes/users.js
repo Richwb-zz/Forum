@@ -16,11 +16,11 @@ router.get("/api/user", function(req, res) {
 	});
 });
 
-router.get("/api/user/:id", function(req, res) {
+router.get("/api/user/:username", function(req, res) {
 	db.User.findOne({
 		include: [db.Post],
 		where: {
-			id: req.params.id
+			username: req.params.username
 		}
 	}).then(function(dbUser) {
 		res.json(dbUser);

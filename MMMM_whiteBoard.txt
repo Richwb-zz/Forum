@@ -79,3 +79,12 @@ signin POST
 		login-password
 
 
+============================Ideas===============================
+
+Forum hasMany Threads hasMany Posts
+
+Posts belongsTo Threads belongsTo Forum
+
+Posts & Threads belongsTo User
+
+Profile belongsTo Userp
