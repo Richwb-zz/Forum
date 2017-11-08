@@ -1,13 +1,7 @@
 module.exports = function(sequelize, DataTypes) {
 	const posts= sequelize.define('posts', {
-		uuid: {
-			type: DataTypes.UUID,
-			defaultValue: DataTypes.UUIDV1,
-    		primaryKey: true,
-			allowNull: false,
-		},
 		post_id: {
-			type: DataTypes.TINYINT(6),
+			type: DataTypes.TINYINT(15),
 			allowNull: false
 		},
 		created_by: {
@@ -33,6 +27,27 @@ module.exports = function(sequelize, DataTypes) {
 					args: [15],
 					msg: 'Post must be a minimum of 15 characters'
 				}
+			}
+		}
+	},
+	{
+		underscored: true,
+		freezeTableName: true,
+		classMethods: {
+			associate: function(models) {
+				posts.belongsTo(models.threads,{
+					foreignKey: {
+						foreignKey: 'thread_id',
+						allowNull: false
+					}
+				});
+				
+				posts.belongsTo(models.users, {
+					foreignKey: {
+						foreignKey: 'User_id',
+						allowNull: false
+					}
+				});
 			}
 		}
 	});
