@@ -31,6 +31,6 @@ module.exports = function(sequelize, DataTypes) {
 		}
 	});
 
-	forum.sync();
-	return forum;
+	forums.sync();
+	return forums;
 }

@@ -17,24 +17,17 @@ module.exports = function(sequelize, DataTypes) {
 			allowNull: false,
 			defaultValue: 0
 		},
-	}{
+	},
+	{
 		underscored: true,
 		freezeTableName: true,
 		classMethods: {
 			associate: function(models) {
-				profiles.hasMany(models.threads)
-			}
-		}
-	}{
-		underscored: true,
-		freezeTableName: true,
-		classMethods: {
-			associate: function(models) {
-				profiles.belongTo(models.users);
+				profiles.hasMany(models.threads);
 			}
 		}
 	});
 
-	profile.sync();
-	return profile;
+	profiles.sync();
+	return profiles;
 }

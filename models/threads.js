@@ -24,7 +24,7 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.DATE,
 			allowNull: false
 		},
-	}
+	},
 	{
 		underscored: true,
 		freezeTableName: true,
@@ -41,6 +41,6 @@ module.exports = function(sequelize, DataTypes) {
 		}
 	});
 
-	thread.sync();
-	return thread;
+	threads.sync();
+	return threads;
 }
