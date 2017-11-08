@@ -9,7 +9,7 @@ var db = require("../models");
 // });
 
 router.get("/api/forum", function(req, res) {
-	db.forum.findAll({
+	db.forums.findAll({
 		include: [db.thread],
 	}).then(function(dbForum) {
 		res.json(dbForum);
@@ -17,8 +17,8 @@ router.get("/api/forum", function(req, res) {
 });// get all forums to display on home page
 
 router.get("/api/forum/:forum_name", function(req, res) {
-	db.forum.findOne({
-		include: [db.thread],
+	db.forums.findOne({
+		include: [db.threads],
 		where: {
 			forum_name: req.params.forum_name
 		}
