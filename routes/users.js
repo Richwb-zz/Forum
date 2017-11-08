@@ -10,7 +10,21 @@ var db = require("../models");
 
 router.get("/api/user", function(req, res) {
 	db.User.findAll({
-		include: [db.Post],
+		// include: [db.Post],
+	}).then(function(dbUser) {
+		res.json(dbUser);
+	});
+});
+
+router.get("/api/user/login", function(req, res) {
+	var usn = req.body.username;
+	var pass = req.body.password;
+	db.User.findOne({
+		where: {
+			username: usn,
+			password: pass
+		}
+		// include: [db.Post],
 	}).then(function(dbUser) {
 		res.json(dbUser);
 	});
@@ -18,7 +32,7 @@ router.get("/api/user", function(req, res) {
 
 router.get("/api/user/:username", function(req, res) {
 	db.User.findOne({
-		include: [db.Post],
+		include: [db.Profile],
 		where: {
 			username: req.params.username
 		}
@@ -27,7 +41,7 @@ router.get("/api/user/:username", function(req, res) {
 	});
 });
 
-router.post("/api/user", function(req, res) {
+router.post("/api/user/new", function(req, res) {
 	db.User.create(req.body).then(function(dbUser) {
 		res.json(dbUser);
 	});
