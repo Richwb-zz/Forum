@@ -1,11 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
 	const profiles = sequelize.define('profiles', {
-		uuid: {
-			type 	: DataTypes.UUID,
-			defaultValue: DataTypes.UUIDV1,
-    		primaryKey: true,
-			allowNull: false,
-		},
 		user_uuid: {
 			type 	: DataTypes.UUID,
 			defaultValue: DataTypes.UUIDV1,
