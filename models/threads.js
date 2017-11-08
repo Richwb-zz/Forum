@@ -10,11 +10,6 @@ module.exports = function(sequelize, DataTypes) {
 				}
 			}
 		},
-		created_By: {
-			type: DataTypes.UUID,
-			defaultValue: DataTypes.UUIDV1,
-			allowNull: false
-		},
 		last_poster: {
 			type: DataTypes.UUID,
 			defaultValue: DataTypes.UUIDV1,
@@ -27,20 +22,25 @@ module.exports = function(sequelize, DataTypes) {
 	},
 	{
 		underscored: true,
-		freezeTableName: true,
-		classMethods: {
-			associate: function(models) {
-				threads.hasMany(models.posts);
-				threads.belongsTo(models.forum,{
-					foreignKey: {
-						foreignKey: 'forum_id',
-						allowNull: false
-					}
-				});
-			}
-		}
+		freezeTableName: true
 	});
 
-	threads.sync();
+	threads.associate = function(models) {
+		threads.hasMany(models.posts);
+		
+		threads.belongsTo(models.users,{
+			foreignKey: {
+				name: "created_by",
+				allowNull: false
+			}
+		});
+
+		threads.belongsTo(models.forums,{
+			foreignKey: {
+				allowNull: false
+			}
+		});
+	}
+
 	return threads;
 }

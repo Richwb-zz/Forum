@@ -4,11 +4,6 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.TINYINT(15),
 			allowNull: false
 		},
-		created_by: {
-			type: DataTypes.UUID,
-			defaultValue: DataTypes.UUIDV1,
-			allowNull: false
-		},
 		edited_by: {
 			type: DataTypes.UUID,
 			defaultValue: DataTypes.UUIDV1,
@@ -27,26 +22,23 @@ module.exports = function(sequelize, DataTypes) {
 	},
 	{
 		underscored: true,
-		freezeTableName: true,
-		classMethods: {
-			associate: function(models) {
-				posts.belongsTo(models.threads,{
-					foreignKey: {
-						foreignKey: 'thread_id',
-						allowNull: false
-					}
-				});
-
-				posts.belongsTo(models.users, {
-					foreignKey: {
-						foreignKey: 'User_id',
-						allowNull: false
-					}
-				});
-			}
-		}
+		freezeTableName: true
 	});
 
-	posts.sync();
+	posts.associate = function(models) {
+		posts.belongsTo(models.threads, {
+			foreignKey: {
+				allowNull: false
+			}
+		});
+
+		posts.belongsTo(models.users, {
+			foreignKey: {
+				name: "created_by",
+				allowNull: false
+			}
+		});
+	}
+
 	return posts;
 }

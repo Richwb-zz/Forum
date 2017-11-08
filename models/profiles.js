@@ -8,14 +8,12 @@ module.exports = function(sequelize, DataTypes) {
 	},
 	{
 		underscored: true,
-		freezeTableName: true,
-		classMethods: {
-			associate: function(models) {
-				profiles.hasMany(models.threads);
-			}
-		}
+		freezeTableName: true
 	});
 
-	profiles.sync();
+	profiles.associate = function(models){
+		profiles.belongsTo(models.users);
+	}
+
 	return profiles;
 }
