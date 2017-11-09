@@ -20,7 +20,7 @@ router.get("/api/user/login", function(req, res) {
 	var usn = req.body.username;
 	var pass = req.body.password;
 	db.users.findOne({
-		attributes: ['username', 'password']
+		attributes: ['username', 'password'],
 		where: {
 			username: usn,
 			password: pass
