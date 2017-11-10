@@ -1,7 +1,8 @@
+include layout
 block content
 	form(name="new_post",method="POST",action="/post")
 		if newThread
 			input(type="input",name="thread-name",value="",required="required")
-		input(type="text",name="post-content",value="",required="required")
+		input(type="textarea",name="post-content",value="",required="required")
 		input(type="submit",value="submit Post")
 	button(type="button") Cancel
