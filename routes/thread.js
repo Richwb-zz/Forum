@@ -12,7 +12,7 @@ router.get("/:forum/:thread", function(req, res) {
 	db.threads.findAll({
 		//where{forum:this.forum}
 	}).then(function(dbThread) {
-		res.json(dbThread);
+		res.render(dbThread);
 	});
 });
 
@@ -22,13 +22,13 @@ router.get("/thread/:thread_name", function(req, res) {
 			thread_name: req.params.thread_name
 		}
 	}).then(function(dbThread) {
-		res.json(dbThread);
+		res.render(dbThread);
 	});
 });
 
 router.post("/thread", function(req, res) {
 	db.threads.create(req.body).then(function(dbThread) {
-		res.json(dbThread);
+		res.render(dbThread);
 	});
 });
 
@@ -38,7 +38,7 @@ router.delete("/thread/:id", function(req, res) {
 			id: req.params.id
 		}
 	}).then(function(dbThread) {
-		res.json(dbThread);
+		res.render(dbThread);
 	});
 });
 

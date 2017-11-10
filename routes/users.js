@@ -12,7 +12,7 @@ router.get("/users", function(req, res) {
 	db.users.findAll({
 		// include: [db.Post],
 	}).then(function(dbUser) {
-		res.json(dbUser);
+		res.render(dbUser);
 	});
 });
 
@@ -27,7 +27,7 @@ router.get("/login", function(req, res) {
 		}
 		// include: [db.Post],
 	}).then(function(dbUser) {
-		res.json(dbUser);
+		res.render(dbUser);
 	});
 });
 
@@ -38,14 +38,14 @@ router.get("/users/:username", function(req, res) {
 			username: req.params.username
 		}
 	}).then(function(dbUser) {
-		res.json(dbUser);
+		res.render(dbUser);
 	});
 });
 
 router.post("/users/new", function(req, res) {
 	console.log(req.body);
 	db.users.create(req.body).then(function(dbUser) {
-		res.json(dbUser);
+		res.render(dbUser);
 	});
 });
 
@@ -55,7 +55,7 @@ router.post("/users/new", function(req, res) {
 // 			id: req.params.id
 // 		}
 // 	}).then(function(dbUser) {
-// 		res.json(dbUser);
+// 		res.render(dbUser);
 // 	});
 // });
 

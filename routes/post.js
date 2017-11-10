@@ -12,7 +12,7 @@ router.get("/:forum/:thread/:posts", function(req, res) {
 	db.posts.findAll({
 		//where{forum:this.forum}
 	}).then(function(dbPost) {
-		res.json(dbPost);
+		res.render(dbPost);
 	});
 });
 
@@ -22,23 +22,23 @@ router.put("/edit/:post_id", function(req, res) {
 			post_id: req.params.post_id
 		}
 	}).then(function(dbPost) {
-		res.json(dbPost);
+		res.render(dbPost);
 	});
 });
 
 router.post("/new_post", function(req, res) {
 	db.posts.create(req.body).then(function(dbPost) {
-		res.json(dbPost);
+		res.render(dbPost);
 	});
 });
 
 router.delete("/post/:id", function(req, res) {
 	db.posts.destroy({
 		where: {
-			id: req.params.id
+			post_id: req.params.id
 		}
 	}).then(function(dbPost) {
-		res.json(dbPost);
+		res.render(dbPost);
 	});
 });
 
