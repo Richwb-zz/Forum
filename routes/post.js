@@ -11,8 +11,8 @@ var db = require("../models");
 router.get("/:forum/:thread/:posts", function(req, res) {
 	db.posts.findAll({
 		//where{forum:this.forum}
-	}).then(function(dbPost) {
-		res.render(dbPost);
+	}).then(function() {
+		res.render('post', { post: req.params.post });
 	});
 });
 
@@ -21,14 +21,14 @@ router.put("/edit/:post_id", function(req, res) {
 		where: {
 			post_id: req.params.post_id
 		}
-	}).then(function(dbPost) {
-		res.render(dbPost);
+	}).then(function() {
+		res.render('post');
 	});
 });
 
 router.post("/new_post", function(req, res) {
-	db.posts.create(req.body).then(function(dbPost) {
-		res.render(dbPost);
+	db.posts.create(req.body).then(function() {
+		res.render('post');
 	});
 });
 
@@ -37,8 +37,8 @@ router.delete("/post/:id", function(req, res) {
 		where: {
 			post_id: req.params.id
 		}
-	}).then(function(dbPost) {
-		res.render(dbPost);
+	}).then(function() {
+		res.render('post');
 	});
 });
 

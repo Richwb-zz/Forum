@@ -27,7 +27,10 @@ router.get("/login", function(req, res) {
 		}
 		// include: [db.Post],
 	}).then(function(dbUser) {
-		res.render(dbUser);
+		res.render('signin', {
+		 username: dbUser.username,
+		 password: dbUser.password
+		});
 	});
 });
 
