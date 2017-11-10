@@ -1,14 +1,32 @@
+extends layout.pug
+
 block content
+	div(class="row content-border")
+		div(class="col")
+			div(class="row")
+				div(class="col")
+					span awesome forum
+			div(class="row")
+				div(class="col")
+					span awesome forum description
+		div(class="col")
+			div(class="row")
+				div(class="col")
+					div(class="row")
+						span thread name
+					div(class="row")
+						span poster time
 
-	each forum in forums
-		div(class="forum")
-			div(class="forum-title")
-				a(href=forum[forumPath]) forum[forumName]
 
-			div(class="forum-description")
-				#{forum[forumDescription]}
+	//- each forum in forums
+	//- 	div(class="forum")
+	//- 		div(class="forum-title")
+	//- 			a(href=forum[forumPath]) forum[forumName]
 
-			div(class="last-post")
-				a(href=forum[threadPath]) #{forum[threadName]}
-				a(href=forum[profileUrl]) #{forum[profileName]}
-				span #{forum[postDate]}
+	//- 		div(class="forum-description")
+	//- 			#{forum[forumDescription]}
+
+	//- 		div(class="last-post")
+	//- 			a(href=forum[threadPath]) #{forum[threadName]}
+	//- 			a(href=forum[profileUrl]) #{forum[profileName]}
+	//- 			span #{forum[postDate]}
