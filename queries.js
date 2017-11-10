@@ -1,16 +1,19 @@
 var models = require("models/index.js");
 
 
-function signInValidation(){
+function signInValidation(user){
 	models.users.findAll({
 	[Op.or]: [
     {
-      username: 
+      username: user
     },
     {
-      Email:
+      Email: user
     }
   ]
 });
+	.then(users => {
+		
+	})
 };
 
