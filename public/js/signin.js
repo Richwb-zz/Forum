@@ -1,15 +1,16 @@
 $(document).ready(function(){
 	
 	$("#login").submit(function(event){
-		
-		if($("#login-username").val() === ""){
+
+		if(usn_in === ""){
 			$("#login-username").addClass("input-error");
 			event.preventDefault();
 		}
 
-		if($("#login-password").val() === ""){
+		if(pass_in === ""){
 			$("#login-password").addClass("input-error");
 			event.preventDefault();
 		}
+
 	});
 });

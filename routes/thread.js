@@ -16,7 +16,7 @@ router.get("/:forum/:thread", function(req, res) {
 	});
 });
 
-router.get("/api/thread/:thread_name", function(req, res) {
+router.get("/thread/:thread_name", function(req, res) {
 	db.threads.findOne({
 		where: {
 			thread_name: req.params.thread_name
@@ -26,13 +26,13 @@ router.get("/api/thread/:thread_name", function(req, res) {
 	});
 });
 
-router.post("/api/thread", function(req, res) {
+router.post("/thread", function(req, res) {
 	db.threads.create(req.body).then(function(dbThread) {
 		res.json(dbThread);
 	});
 });
 
-router.delete("/api/thread/:id", function(req, res) {
+router.delete("/thread/:id", function(req, res) {
 	db.threads.destroy({
 		where: {
 			id: req.params.id

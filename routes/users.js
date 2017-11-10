@@ -8,7 +8,7 @@ var db = require("../models");
 //   res.send('respond with a resource');
 // });
 
-router.get("/api/user", function(req, res) {
+router.get("/users", function(req, res) {
 	db.users.findAll({
 		// include: [db.Post],
 	}).then(function(dbUser) {
@@ -16,7 +16,7 @@ router.get("/api/user", function(req, res) {
 	});
 });
 
-router.get("/api/user/login", function(req, res) {
+router.get("/login", function(req, res) {
 	var usn = req.body.username;
 	var pass = req.body.password;
 	db.users.findOne({
@@ -31,7 +31,7 @@ router.get("/api/user/login", function(req, res) {
 	});
 });
 
-router.get("/api/user/:username", function(req, res) {
+router.get("/users/:username", function(req, res) {
 	db.users.findOne({
 		include: [db.profiles],
 		where: {
@@ -42,14 +42,14 @@ router.get("/api/user/:username", function(req, res) {
 	});
 });
 
-router.post("/api/user/new", function(req, res) {
+router.post("/users/new", function(req, res) {
 	console.log(req.body);
 	db.users.create(req.body).then(function(dbUser) {
 		res.json(dbUser);
 	});
 });
 
-// router.delete("/api/user/:id", function(req, res) {
+// router.delete("/user/:id", function(req, res) {
 // 	db.User.destroy({
 // 		where: {
 // 			id: req.params.id
