@@ -1,12 +1,11 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00B7FF;
-}
-
 .input-error{
 	background-color: red;
+}
+
+#login{
+	font-size: 0.80em;
+}
+
+.content-border{
+	border: 1px solid black;
 }
