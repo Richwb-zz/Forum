@@ -16,10 +16,10 @@ router.get("/:forum/:thread/:posts", function(req, res) {
 	});
 });
 
-router.get("/threads/:thread_name", function(req, res) {
+router.put("/edit/:post_id", function(req, res) {
 	db.posts.findOne({
 		where: {
-			thread_name: req.params.thread_name
+			post_id: req.params.post_id
 		}
 	}).then(function(dbPost) {
 		res.json(dbPost);
