@@ -1,7 +1,6 @@
 var express = require('express');
-var bodyParser = require('body-parser');
 var router = express.Router();
-var db = require("../models");
+var queries = require('./test.js');
 
 
 // /* GET users listing. */
@@ -9,38 +8,46 @@ var db = require("../models");
 //   res.send('respond with a resource');
 // });
 
-router.get("/:forum/:thread/:posts", function(req, res) {
-	db.posts.findAll({
-		//where{forum:this.forum}
-	}).then(function() {
-		res.render('post', { post: req.params.post });
-	});
+router.get("/", function(req, res) {
+	res.render('post');
 });
 
-router.put("/edit/:post_id", function(req, res) {
-	db.posts.findOne({
-		where: {
-			post_id: req.params.post_id
-		}
-	}).then(function() {
-		res.render('post');
-	});
+router.post("/", function(req, res) {
+	res.render('post');
 });
 
-router.post("/new_post", function(req, res) {
-	db.posts.create(req.body).then(function() {
-		res.render('post');
-	});
-});
+// router.get("/:forum/:thread/:posts", function(req, res) {
+// 	db.posts.findAll({
+// 		//where{forum:this.forum}
+// 	}).then(function() {
+// 		res.render('post', { post: req.params.post });
+// 	});
+// });
 
-router.delete("/post/:id", function(req, res) {
-	db.posts.destroy({
-		where: {
-			post_id: req.params.id
-		}
-	}).then(function() {
-		res.render('post');
-	});
-});
+// router.put("/edit/:post_id", function(req, res) {
+// 	db.posts.findOne({
+// 		where: {
+// 			post_id: req.params.post_id
+// 		}
+// 	}).then(function() {
+// 		res.render('post');
+// 	});
+// });
+
+// router.post("/new_post", function(req, res) {
+// 	db.posts.create(req.body).then(function() {
+// 		res.render('post');
+// 	});
+// });
+
+// router.delete("/post/:id", function(req, res) {
+// 	db.posts.destroy({
+// 		where: {
+// 			post_id: req.params.id
+// 		}
+// 	}).then(function() {
+// 		res.render('post');
+// 	});
+// });
 
 module.exports = router;

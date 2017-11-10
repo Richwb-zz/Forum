@@ -1,30 +1,10 @@
 var express = require('express');
 var router = express.Router();
-var db = require("../models");
 
 
-// /* GET users listing. */
-// router.get('/', function(req, res, next) {
-//   res.send('respond with a resource');
-// });
-
-router.get("/api/forum", function(req, res) {
-	db.forums.findAll({
-		include: [db.thread],
-	}).then(function(dbForum) {
-		res.render(dbForum);
-	});
-});// get all forums to display on home page
-
-router.get("/api/forum/:forum_name", function(req, res) {
-	db.forums.findOne({
-		include: [db.threads],
-		where: {
-			forum_name: req.params.forum_name
-		}
-	}).then(function(dbForum) {
-		res.render(dbForum);
-	});
-});//search for a specific forum
+/* GET users listing. */
+router.get('/:forumId', function(req, res, next) {
+  res.render('respond with a resource');
+});
 
 module.exports = router;
