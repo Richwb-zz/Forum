@@ -57,7 +57,7 @@ module.exports.getForum = function(res){
 
           forumId = thisforum.id;
 
-        allforums.push([forumName, forumDesc, forumId]);
+        allforums.push([forumId, forumName, forumDesc]);
 }
 
     res.render('index', {forums: allforums});
@@ -82,7 +82,7 @@ module.exports.getThread = function(res){
 
           threadId = thisthread.id;
 
-        allthreads.push([threadName, lastPoster, lastPostDate, threadId]);
+        allthreads.push([threadId, threadName, lastPoster, lastPostDate]);
 }
 
     res.render('index', {threads: allthreads});

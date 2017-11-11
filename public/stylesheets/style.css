@@ -9,3 +9,18 @@
 .content-border{
 	border: 1px solid black;
 }
+.card-style{
+	color: #6BE4E3;
+	background-color:#2C164E;
+
+}
+.titles{
+	font-size: 22px;
+}
+body{
+	background-color: black;
+	background-image: url(../images/space-theme-bg.jpeg); 
+	background-repeat: repeat-y;
+	background-size: 200%;
+	background-blend-mode: screen;
+}

@@ -1,31 +1,21 @@
 extends layout.pug
 
 block content
-	div(class="row content-border")
-		div(class="col")
-			div(class="row")
-				div(class="col")
-					span awesome forum
-			div(class="row")
-				div(class="col")
-					span awesome forum description
-		div(class="col")
-			div(class="row")
-				div(class="col")
-					div(class="row")
-						span thread name
-					div(class="row")
-						span poster time
-
+	
 	each forum in forums
-		div(class="forum")
-			div(class="forum-title")
-				a(href=forum[id]) #{forum}
-
-			div(class="forum-description")
-				#{forum[description]}
-
-	//- 		div(class="last-post")
-	//- 			a(href=forum[threadPath]) #{forum[threadName]}
-	//- 			a(href=forum[profileUrl]) #{forum[profileName]}
-	//- 			span #{forum[postDate]}
+		.card
+		.row.content-border.card-body.card-style
+			.col
+				.row.card-title
+					.col.titles
+						a(href="forum/" + forum[0]) #{forum[1]}
+				.row.card-text
+					.col
+						span #{forum[2]}
+			.col
+				.row
+					.col
+						.row
+							span thread name
+						.row
+							span poster time
