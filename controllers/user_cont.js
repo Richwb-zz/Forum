@@ -4,11 +4,10 @@ module.exports.getUser = function(num) {
   return new Promise((resolve, reject) => {
     var userId = parseInt(num);
     // Make query
-    if (userId) {
-      Models.User.findOne({
-        include: [{ model: Models.Avatar }],
-        where: { id: userId },
-        attributes: { exclude: ['password_hash'] },
+    if (user_id) {
+      db.users.findOne({
+        include: [{ profile: db.profiles }],
+        where: { uuid: user_id },
       }).then((results) => {
         if (!results) {
           resolve({}); // if no user, return empty object not NULL
@@ -17,9 +16,7 @@ module.exports.getUser = function(num) {
         }
       }); 
     } else {
-      Models.User.findAll({
-        attributes: { exclude: ['password_hash'] },
-      }).then((results) => {
+      db.users.findAll({}).then((results) => {
         if (!results) {
           resolve({}); // if no user, return empty object not NULL
         } else {
