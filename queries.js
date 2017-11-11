@@ -44,7 +44,22 @@ module.exports.getUser = function(num) {
 module.exports.getForum = function(res){
   models.forums.findAll()
   .then(forums => {
-    console.log(forums);
-    res.render('index', {forums: forums});
+    // console.log(forums);
+    var allforums = [];
+    var thisforum;
+    for(var forum in forums){
+          // Assign data Values to a var for cleaner handling
+          thisforum = forums[forum].dataValues;
+          // Assign forum name to its own var for easier handling
+          forumName = thisforum.forum_name;
+
+          forumDesc = thisforum.description;
+
+          forumId = thisforum.id;
+
+        allforums.push([forumName, forumDesc, forumId]);
+}
+
+    res.render('index', {forums: allforums});
   });
 };
