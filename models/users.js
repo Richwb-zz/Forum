@@ -26,7 +26,7 @@ module.exports = function(sequelize, DataTypes) {
 				}
 			}
 		},
-		Firstname: {
+		firstname: {
 			type: DataTypes.STRING(25),
 			allowNull: false,
 			validate: {
@@ -36,7 +36,7 @@ module.exports = function(sequelize, DataTypes) {
 				}
 			}
 		},
-		Lastname: {
+		lastname: {
 			type: DataTypes.STRING(25),
 			allowNull: false,
 			validate: {
@@ -46,7 +46,7 @@ module.exports = function(sequelize, DataTypes) {
 				}
 			}
 		},
-		Email: {
+		email: {
 			type: DataTypes.STRING(50),
 			allowNull: false,
 			validate: {
