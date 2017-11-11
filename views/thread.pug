@@ -1,7 +1,26 @@
 block content
+	extends layout.pug
+
+block content
+	div(class="row content-border")
+		div(class="col")
+			div(class="row")
+				div(class="col")
+					span awesome forum
+			div(class="row")
+				div(class="col")
+					span awesome forum description
+		div(class="col")
+			div(class="row")
+				div(class="col")
+					div(class="row")
+						span thread name
+					div(class="row")
+						span poster time
+
 
 		each post in posts
-			div(class="postheader")
+			div(class=" postheader")
 				span #{post[postNum]}
 			div(class="post")
 				div(class="poster-info")

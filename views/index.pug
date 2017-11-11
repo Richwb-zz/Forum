@@ -17,14 +17,13 @@ block content
 					div(class="row")
 						span poster time
 
+	each forum in forums
+		div(class="forum")
+			div(class="forum-title")
+				a(href=forum[forumPath]) #{forum}
 
-	//- each forum in forums
-	//- 	div(class="forum")
-	//- 		div(class="forum-title")
-	//- 			a(href=forum[forumPath]) forum[forumName]
-
-	//- 		div(class="forum-description")
-	//- 			#{forum[forumDescription]}
+			div(class="forum-description")
+				#{forum[description]}
 
 	//- 		div(class="last-post")
 	//- 			a(href=forum[threadPath]) #{forum[threadName]}
