@@ -59,7 +59,7 @@ module.exports.getForum = function(res){
 
         allforums.push([forumId, forumName, forumDesc]);
 }
-
+  
     res.render('index', {forums: allforums});
   });
 };
@@ -84,7 +84,7 @@ module.exports.getThread = function(res){
 
         allthreads.push([threadId, threadName, lastPoster, lastPostDate]);
 }
-
+    console.log("allthreads: "+allthreads)
     res.render('index', {threads: allthreads});
   });
 };
