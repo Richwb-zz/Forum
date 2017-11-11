@@ -1,4 +1,4 @@
-var models = require("models/index.js");
+var models = require("./models/index.js");
 
 module.exports.signInValidation = function(user){
 	models.users.findAll({
@@ -10,14 +10,13 @@ module.exports.signInValidation = function(user){
       Email: user
     }
   ]
-});
+})
 	.then(users => {
 		
 	})
 };
 
 module.exports.getUser = function(num) {
-  return new Promise((resolve, reject) => {
     var userId = parseInt(num);
     // Make query
     if (user_id) {
@@ -40,14 +39,12 @@ module.exports.getUser = function(num) {
         }
       })
     }
-  }); // end of Promise
-};
+  }; // end of Promise
 
-module.exports.getForum = function(){
-  models.forum.findAll({
-    
+module.exports.getForum = function(res){
+  models.forums.findAll()
+  .then(forums => {
+    console.log(forums);
+    res.render('index', {forums: forums});
   });
-    .then(forum => {
-
-    })
 };
