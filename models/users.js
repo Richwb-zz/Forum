@@ -62,27 +62,5 @@ module.exports = function(sequelize, DataTypes) {
 		freezeTableName: true
 	});
 
-	users.associate = function(models){
-		users.hasMany(models.posts, {
-			foreignKey: {
-				name: "created_by",
-				allowNull: false
-			}
-		});
-		
-		users.hasMany(models.threads, {
-			foreignKey: {
-				name: "created_by",
-				allowNull: false
-			}
-		});
-
-		users.hasOne(models.profiles, {
-			foreignKey: {
-				allowNull: false
-			}
-		});
-	}
-
 	return users;
 }
