@@ -63,3 +63,28 @@ module.exports.getForum = function(res){
     res.render('index', {forums: allforums});
   });
 };
+
+module.exports.getThread = function(res){
+  models.threads.findAll()
+  .then(threads => {
+    // console.log(threads);
+    var allthreads = [];
+    var thisthread;
+    for(var thread in threads){
+          // Assign data Values to a var for cleaner handling
+          thisthread = threads[thread].dataValues;
+          // Assign forum name to its own var for easier handling
+          threadName = thisthread.thread_name;
+
+          lastPoster = thisthread.last_poster;
+
+          lastPostDate = thisthread.last_post_date;
+
+          threadId = thisthread.id;
+
+        allthreads.push([threadName, lastPoster, lastPostDate, threadId]);
+}
+
+    res.render('index', {threads: allthreads});
+  });
+};
