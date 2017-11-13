@@ -1,3 +1,5 @@
+var bcrypt = require('bcrypt');
+
 module.exports = function(sequelize, DataTypes) {
 	const users = sequelize.define('users', {
 		uuid: {
@@ -19,12 +21,6 @@ module.exports = function(sequelize, DataTypes) {
 		password: {
 			type: DataTypes.STRING(25),
 			allowNull: false,
-			validate: {
-				len: {
-					args: [8, 25],
-					msg: 'Password length must be between 8 and 25 characters'
-				}
-			}
 		},
 		firstname: {
 			type: DataTypes.STRING(25),
@@ -58,9 +54,26 @@ module.exports = function(sequelize, DataTypes) {
 		}
 	},
 	{
+		hooks: {
+			beforeCreate: (user) => {
+				const salt = bcrypt.genSaltSync(8);
+				user.password = bcrypt.hashSync(user.password, salt);
+
+			}
+		},
 		underscored: true,
 		freezeTableName: true
 	});
+
+	users.associate = function(models){
+		users.hasMany(models.threads);
+		users.hasMany(models.posts);
+	}
+
+	users.prototype.validPassword = function(password){
+		return bcrypt.compareSync(password, this.password);
+	}
+
 
 	return users;
 }
