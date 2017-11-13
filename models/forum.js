@@ -23,13 +23,12 @@ module.exports = function(sequelize, DataTypes) {
 	},
 	{
 		underscored: true,
-		freezeTableName: true,
-		classMethods: {
-			associate: function(models) {
-				forums.hasMany(models.threads);
-			}
-		}
+		freezeTableName: true
 	});
+
+	forums.associate = function(models){
+		forums.hasMany(models.threads);
+	}
 
 	return forums;
 }
