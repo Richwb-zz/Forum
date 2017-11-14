@@ -53,19 +53,11 @@ function getThread(res){
     var allthreads = [];
     var thisthread;
     for(var thread in threads){
-          // Assign data Values to a var for cleaner handling
-          thisthread = threads[thread].dataValues;
-          // Assign forum name to its own var for easier handling
-          threadName = thisthread.thread_name;
-
-          lastPoster = thisthread.last_poster;
-
-          lastPostDate = thisthread.last_post_date;
-
-          threadId = thisthread.id;
-
-        allthreads.push([threadId, threadName, lastPoster, lastPostDate]);
+        // Assign data Values to a var for cleaner handling
+        thisthread = threads[thread].dataValues;
+        allthreads.push([thisthread.threadId, thisthread.threadName, thisthread.lastPoster, lastPostDate]);
     }
+   
     console.log("allthreads: " + allthreads)
     res.render('index', {threads: allthreads});
   });
