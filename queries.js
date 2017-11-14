@@ -2,7 +2,9 @@ var models = require("./models/index.js");
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
-module.exports.getUser = function(num) {
+
+
+function getUser(num) {
     var userId = parseInt(num);
     // Make query
     if (user_id) {
@@ -27,7 +29,7 @@ module.exports.getUser = function(num) {
     }
   }; // end of Promise
 
-module.exports.getForum = function(req, res){
+function getForum(req, res){
   models.forums.findAll()
   .then(forums => {
     
@@ -38,16 +40,14 @@ module.exports.getForum = function(req, res){
         thisforum = forums[forum].dataValues;
         allforums.push([thisforum.id, thisforum.forum_name, thisforum.description]);
     }
-    console.log(allforums);
-    if(req.session.user){
-      res.render('index', {forums: allforums, user: req.session.user});
-    }else{
-      res.render('index', {forums: allforums});
-    }
+    console.log("&&&&&&&&&&&&&&&&&&&&&&&&");
+    console.log(res.locals.user)
+    res.render('index', {forums: allforums, user: res.locals.user});
+  
   });
 };
 
-module.exports.getThread = function(res){
+function getThread(res){
   models.threads.findAll()
   .then(threads => {
     // console.log(threads);
@@ -72,10 +72,12 @@ module.exports.getThread = function(res){
   });
 };
 
-module.exports.login = function(res){
+function login(req, res){
+  console.log("===============================");
+  console.log(res.locals.user);
   loginForm = req.body;
 
-  Models.users.findOne({ 
+  models.users.findOne({ 
     where: { 
       [Op.or]: [
         {
@@ -92,10 +94,18 @@ module.exports.login = function(res){
       if(user.validPassword(loginForm.password)){
         req.session.user = user.dataValues;
         req.session.save();
+        console.log(req.session);
       }else{
         console.log("fail");
       }
     }
-    getForum(req,res);
+    res.redirect('/');
   });
+}
+
+module.exports = {
+  getUser   : getUser,
+  getForum  : getForum,
+  getThread : getThread,
+  login     : login
 }
