@@ -1,20 +1,6 @@
 var models = require("./models/index.js");
-
-module.exports.signInValidation = function(user){
-	models.users.findAll({
-	[Op.or]: [
-    {
-      username: user
-    },
-    {
-      Email: user
-    }
-  ]
-})
-	.then(users => {
-		
-	})
-};
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
 module.exports.getUser = function(num) {
     var userId = parseInt(num);
@@ -41,26 +27,23 @@ module.exports.getUser = function(num) {
     }
   }; // end of Promise
 
-module.exports.getForum = function(res){
+module.exports.getForum = function(req, res){
   models.forums.findAll()
   .then(forums => {
-    // console.log(forums);
+    
     var allforums = [];
     var thisforum;
     for(var forum in forums){
-          // Assign data Values to a var for cleaner handling
-          thisforum = forums[forum].dataValues;
-          // Assign forum name to its own var for easier handling
-          forumName = thisforum.forum_name;
-
-          forumDesc = thisforum.description;
-
-          forumId = thisforum.id;
-
-        allforums.push([forumId, forumName, forumDesc]);
-}
-  
-    res.render('index', {forums: allforums});
+        // Assign data Values to a var for cleaner handling
+        thisforum = forums[forum].dataValues;
+        allforums.push([thisforum.id, thisforum.forum_name, thisforum.description]);
+    }
+    console.log(allforums);
+    if(req.session.user){
+      res.render('index', {forums: allforums, user: req.session.user});
+    }else{
+      res.render('index', {forums: allforums});
+    }
   });
 };
 
@@ -83,8 +66,36 @@ module.exports.getThread = function(res){
           threadId = thisthread.id;
 
         allthreads.push([threadId, threadName, lastPoster, lastPostDate]);
-}
-    console.log("allthreads: "+allthreads)
+    }
+    console.log("allthreads: " + allthreads)
     res.render('index', {threads: allthreads});
   });
 };
+
+module.exports.login = function(res){
+  loginForm = req.body;
+
+  Models.users.findOne({ 
+    where: { 
+      [Op.or]: [
+        {
+          username: loginForm.account
+        },
+        {
+          Email: loginForm.account
+        }
+      ]
+    }
+  })
+  .then(user => {
+    if(user){
+      if(user.validPassword(loginForm.password)){
+        req.session.user = user.dataValues;
+        req.session.save();
+      }else{
+        console.log("fail");
+      }
+    }
+    getForum(req,res);
+  });
+}
