@@ -45,8 +45,6 @@ app.use(function(req, res, next){
 	}else{
 		res.locals.user = false;
 	}
-	console.log("+++++++++++++++++++++++++++++++++");
-	console.log(res.locals.user);
 	next();
 });
 
