@@ -40,8 +40,7 @@ function getForum(req, res){
         thisforum = forums[forum].dataValues;
         allforums.push([thisforum.id, thisforum.forum_name, thisforum.description]);
     }
-    console.log("&&&&&&&&&&&&&&&&&&&&&&&&");
-    console.log(res.locals.user)
+
     res.render('index', {forums: allforums, user: res.locals.user});
   
   });
@@ -73,8 +72,6 @@ function getThread(res){
 };
 
 function login(req, res){
-  console.log("===============================");
-  console.log(res.locals.user);
   loginForm = req.body;
 
   models.users.findOne({ 
@@ -94,12 +91,13 @@ function login(req, res){
       if(user.validPassword(loginForm.password)){
         req.session.user = user.dataValues;
         req.session.save();
-        console.log(req.session);
+       
       }else{
-        console.log("fail");
+
       }
     }
-    res.redirect('/');
+  backURL=req.header('Referer') || '/';
+  res.redirect(backURL);
   });
 }
 
