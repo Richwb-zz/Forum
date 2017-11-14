@@ -1,5 +1,5 @@
 if user
-	a(href="/profile/" + user.username) #{user.username}
+	a(href="/profile/" + user) #{user}
 	a(href="/signout") Sign Out
 else
 	form(id="login",name="login-form",method="POST",action="/login")
