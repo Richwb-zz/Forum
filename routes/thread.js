@@ -18,8 +18,8 @@ router.delete("/thread/:id", function(req, res) {
  	});
 });
 
-router.get("/:forumId/newthread"). function(req, res){
+router.get("/:forumId/newthread", function(req, res){
 	res.render("post", {newThread: true});
-}
+});
 
 module.exports = router;
