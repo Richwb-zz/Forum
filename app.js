@@ -7,6 +7,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var router = express.Router();
 
+
 var index = require('./routes/index');
 var post = require('./routes/post');
 var forum = require('./routes/forum');
@@ -38,11 +39,25 @@ app.use(session({
 	}
 }));
 
+app.use(function(req, res, next){
+	if(req.session.user){
+		res.locals.user = req.session.user.username;
+	}else{
+		res.locals.user = false;
+	}
+	console.log("+++++++++++++++++++++++++++++++++");
+	console.log(res.locals.user);
+	next();
+});
+
 app.use('/', index);
 app.use('/users', users);
 app.use('/post', post);
 app.use('/forum', forum);
 app.use('/thread', thread);
+
+
+
 
 //catch 404 and forward to error handler
 app.use(function(req, res, next) {
