@@ -3,6 +3,11 @@ if user
 	a(href="/signout") Sign Out
 else
 	form(id="login",name="login-form",method="POST",action="/login")
+		label(for='account') &nbspName:&nbsp
 		input(id="login-username",name="account",type="text",value="")
+		label(for='password') &nbspPassword:&nbsp
 		input(id="login-password",name="password",type="password",value="")
 		input(type="submit",value="Login")
+a(href="/") Profile
+a(href="/") Register 
+

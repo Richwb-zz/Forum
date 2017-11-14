@@ -3,24 +3,70 @@
 }
 
 #login{
+	margin: 5px 1px; 
 	font-size: 0.80em;
 }
 
-.content-border{
-	border: 1px solid black;
+.navig{
+	opacity: 0.8;
+	padding-left: 10px;
+	margin: 2px 10px;
 }
-.card-style{
+
+.navig a{
+	padding-left: 10px; 
+}
+
+.page-title{
+	padding: 10px;
+	text-align: center;
+	color: #6BE4E3;
+}
+
+.content-style{
+	opacity: 1;
+	border: 1px solid black;
+	margin: 5px 1px;
+	border-radius: 5px;
+}
+
+.card{
+	opacity: 0.98;
+	border-radius: 5px;
+	background-color: #200D3E;
+
+}
+
+.card-header{
+	background-color: #2C162E;
+	color: #9500DC;
+}
+
+.forum-style{
 	color: #6BE4E3;
 	background-color:#2C164E;
-
+	margin: 5px;
 }
 .titles{
 	font-size: 22px;
 }
+
+.foot-style{
+	padding: 2px 15px;
+	margin-top: 10px;
+	border: 2px solid #000;
+	border-radius: 5px;
+	background-color: #200D3E;
+
+}
+
 body{
+
+	color: #6BE4E3;
+
 	background-color: black;
 	background-image: url(../images/space-theme-bg.jpeg); 
 	background-repeat: repeat-y;
-	background-size: 200%;w
+	background-size: 200%;
 	background-blend-mode: screen;
 }

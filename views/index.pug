@@ -1,21 +1,23 @@
 extends layout.pug
 
 block content
+
+	.card
+		.card-header
+			.card-title 
+			h2 Forums! </h2> Please browse responsibly!
 	
-	each forum in forums
-		.card
-		.row.content-border.card-body.card-style
-			.col
-				.row.card-title
-					.col.titles
-						a(href="forum/" + forum[0]) #{forum[1]}
-				.row.card-text
-					.col
-						span #{forum[2]}
-			.col
-				.row
-					.col
-						.row
-							span #{thread}
-						.row
-							span poster time
+		each forum in forums
+			.row.content-style.card-body.forum-style
+				.col
+					.row.card-title
+						.col.titles
+							a(href="forum/" + forum[0]) #{forum[1]}
+					.row.card-text
+						.col
+							span #{forum[2]}
+				.card-footer.text-muted
+					.row
+						span #{thread}
+					.row
+						span poster time
