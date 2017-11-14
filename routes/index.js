@@ -12,6 +12,20 @@ router.get("/", function(req, res) {
 
 router.post("/login", function(req, res) {
 	query.login(req, res);
+});
+
+router.get("/signout", function(req, res) {
+	req.session.destroy();
+	res.redirect("/");
+});
+
+router.get("/register", function(req, res) {
+	res.render("register");
+});
+
+router.get("/profile", function(req, res) {
+	res.render("profile");
 })
+
 
 module.exports = router;
