@@ -73,22 +73,30 @@ function getThread(req, res){
   });
 };
 
-// function getPost(res){
-//   models.posts.findAll()
-//   .then(posts => {
-//     // console.log(threads);
-//     var allposts = [];
-//     var thispost;
-//     for(var post in posts){
-//         // Assign data Values to a var for cleaner handling
-//         thispost = posts[post].dataValues;
-//         allposts.push([thispost.post_id, thispost., thisthread.lastPoster, lastPostDate]);
-//     }
+ function getPost(req, res){
+  var threadUrl = req.originalUrl.replace("/forum/","");
+  var threadName = threadUrl.substring(0,threadUrl.lastIndexOf("-"));
+  var threadId = threadUrl.substring(threadUrl.lastIndexOf("-")+1,threadUrl.length);
+  console.log(threadId)
+   models.posts.findAll({
+      where: {
+        thread_id: threadId
+      }
+   })
+   .then(posts => {
+ console.log(posts);
+     var allposts = [];
+     var thispost;
+     for(var post in posts){
+         // Assign data Values to a var for cleaner handling
+         thispost = posts[post].dataValues;
+         allposts.push([thispost.post_id, thispost.edited_by, thispost.content]);
+     }
    
-//     console.log("allthreads: " + allthreads)
-//     res.render('index', {threads: allthreads});
-//   });
-// };
+     console.log("allposts: " + allposts)
+     res.render('thread', {posts: allposts, originalUrl : req.originalUrl, threadName: threadName});
+   });
+ };
 
 function login(req, res){
   loginForm = req.body;
@@ -124,5 +132,6 @@ module.exports = {
   getUser   : getUser,
   getForum  : getForum,
   getThread : getThread,
+  getPost   : getPost,
   login     : login
 }
