@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
-var query = require('../queries.js');
+var queries = require('../queries.js');
 
 
 /* GET users listing. */
 router.get('/:threadId', function(req, res, next) {
-  query.getPosts(req,res);
+  queries.getPost(req, res);
 });
 
 router.delete("/:threadId", function(req, res) {
