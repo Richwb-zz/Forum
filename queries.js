@@ -55,13 +55,11 @@ function getThread(res){
     for(var thread in threads){
         // Assign data Values to a var for cleaner handling
         thisthread = threads[thread].dataValues;
-        console.log("-------------------------------------------------")
-        console.log(thisthread);
-        allthreads.push([thisthread.threadId, thisthread.threadName, thisthread.lastPoster, lastPostDate]);
+    
+        allthreads.push([thisthread.id, thisthread.thread_name, thisthread.last_poster, thisthread.last_post_date]);
     }
    
-    console.log("allthreads: " + allthreads)
-    res.render('index', {threads: allthreads});
+    res.render('forum', {threads: allthreads});
   });
 };
 
