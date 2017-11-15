@@ -1,20 +1,6 @@
 extends layout.pug
 
 block content
-	.card
-		.card-header
-			.card-title 
-			h3 Thread Title
-
-	each post in posts
-		.content-style.card-body
-			.post-title
-				a(href= originalUrl +"/thread/"+ thread[0]) #{thread[1]}
-
-			.last-post.text-muted
-				span.colorG Last Poster: </span> #{thread[2]} &nbsp
-				span.colorG Last Post made at: </span> #{thread[3]}
-
 	form(name="new_post",method="POST",action="/post")
 		if newThread
 			input(type="input",name="thread-name",value="",required="required")
