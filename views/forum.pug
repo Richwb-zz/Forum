@@ -1,11 +1,18 @@
+extends layout.pug
+
 block content
+	.card
+		.card-header
+			.card-title 
+			p Forum Title
 
 	each thread in threads
-		div(class="thread")
-			div(class="thread-title")
-				a(href=thread[id]) thread[thread_name]
+		.content-style.card-body
+			.thread-title
+				a(href="/thread/"+ thread[0]) #{thread[1]}
 
-			div(class="last-post")
-				span lastpost: thread[last_post_date] by: 
-				a(href=thread[profile_url]) #{thread[profile_name]}
-				span #{post[postDate]}
+			.last-post.text-muted
+				span.colorG Last Poster: </span> #{thread[2]} &nbsp
+				span.colorG Last Post made at: </span> #{thread[3]}
+			//- 	a(href=thread[profile_url]) #{thread[profile_name]}
+			//- 	span #{post[post_date]}

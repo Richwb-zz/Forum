@@ -41,6 +41,9 @@ body{
 	border: 1px solid black;
 	margin: 10px 5px;
 	border-radius: 5px;
+	color: #6BE4E3;
+	background-color:#2C164E;
+	margin: 5px;
 }
 
 .card{
@@ -55,11 +58,6 @@ body{
 	color: #9500DC;
 }
 
-.forum-style{
-	color: #6BE4E3;
-	background-color:#2C164E;
-	margin: 5px;
-}
 .titles{
 	font-size: 22px;
 }
@@ -73,6 +71,14 @@ body{
 }
 .pro-pic{
 	width: 100%;
+}
+
+.last-post{
+	font-size: 10px;
+}
+
+.colorG{
+	color:#62D490;
 }
 
 .foot-style{
