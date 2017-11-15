@@ -3,9 +3,9 @@ block content
 	each thread in threads
 		div(class="thread")
 			div(class="thread-title")
-				a(href=thread[threadPath]) thread[threadName]
+				a(href=thread[id]) thread[thread_name]
 
 			div(class="last-post")
-				span lastpost: thread[postDate] by: 
-				a(href=thread[profileUrl]) #{thread[profileName]}
+				span lastpost: thread[last_post_date] by: 
+				a(href=thread[profile_url]) #{thread[profile_name]}
 				span #{post[postDate]}
