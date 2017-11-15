@@ -23,7 +23,7 @@ router.get("/register", function(req, res) {
 	res.render("register");
 });
 
-router.get("/profile", function(req, res) {
+router.get("/profile/:user", function(req, res) {
 	res.render("profile");
 })
 
