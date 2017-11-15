@@ -60,7 +60,7 @@ function getThread(req, res){
         allthreads.push([thisthread.id, thisthread.thread_name, thisthread.last_poster, thisthread.last_post_date]);
     }
    
-    res.render('forum', {threads: allthreads}, originalUrl : req.originalUrl);
+    res.render('forum', {threads: allthreads, originalUrl : req.originalUrl});
   });
 };
 
