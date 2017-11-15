@@ -1,0 +1,54 @@
+extends layout.pug
+
+block content
+
+	.card
+		.card-header
+			.card-title 
+			h2 Registration Page! </h2> Please fill out all forms.
+		.content-style.card-body
+			form(id="register",name="register-form",method="PUT",action="/register")
+
+				label(for='first-name') &nbsp First Name: &nbsp
+				br
+				input(id="register-firstname",name="first-name",type="text",value="",required="required")
+
+				br
+				br
+
+				label(for='last-name') &nbsp Last Name: &nbsp
+				br
+				input(id="register-lastname",name="last-name",type="text",value="",required="required")
+
+				br
+				br
+
+				label(for='account') &nbsp Username: &nbsp
+				br
+				input(id="register-username",name="account",type="text",value="",required="required")
+
+				br
+				br
+
+				label(for='email') &nbsp Email: &nbsp
+				br
+				input(id="register-email",name="email",type="email",value="",required="required")
+
+				br
+				br
+
+				label(for='password') &nbsp Password: &nbsp
+				br
+				input(id="register-password",name="password",type="password",value="",required="required")
+
+				br
+				br
+
+				label(for='password') &nbsp Confirm Password: &nbsp
+				br
+				input(id="register-passwordC",name="passwordC",type="password",value="",required="required")
+
+				br
+				br
+
+				input(type="submit",value="Submit Registration")

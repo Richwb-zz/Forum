@@ -1,3 +1,21 @@
+
+body{
+
+	color: #6BE4E3;
+
+	background-color: black;
+	background-image: url(../images/space-theme-bg.jpeg); 
+	background-repeat: repeat-y;
+	background-size: 200%;
+	background-blend-mode: screen;
+}
+
+.navig{
+	opacity: 0.8;
+	padding-left: 10px;
+	margin: 2px 10px;
+}
+
 .input-error{
 	background-color: red;
 }
@@ -7,11 +25,6 @@
 	font-size: 0.80em;
 }
 
-.navig{
-	opacity: 0.8;
-	padding-left: 10px;
-	margin: 2px 10px;
-}
 
 .navig a{
 	padding-left: 10px; 
@@ -26,7 +39,7 @@
 .content-style{
 	opacity: 1;
 	border: 1px solid black;
-	margin: 5px 1px;
+	margin: 10px 5px;
 	border-radius: 5px;
 }
 
@@ -58,15 +71,4 @@
 	border-radius: 5px;
 	background-color: #200D3E;
 
-}
-
-body{
-
-	color: #6BE4E3;
-
-	background-color: black;
-	background-image: url(../images/space-theme-bg.jpeg); 
-	background-repeat: repeat-y;
-	background-size: 200%;
-	background-blend-mode: screen;
 }
