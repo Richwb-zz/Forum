@@ -64,6 +64,17 @@ body{
 	font-size: 22px;
 }
 
+.avatar{
+	max-width: 200px;
+	max-height: 200px; 
+	
+	padding: 5px;
+	float: left;
+}
+.pro-pic{
+	width: 100%;
+}
+
 .foot-style{
 	padding: 2px 15px;
 	margin-top: 10px;
