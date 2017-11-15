@@ -4,7 +4,7 @@ var queries = require('../queries.js')
 
 /* GET users listing. */
 router.get('/:forumId', function(req, res) {
-  queries.getThread(res);
+  queries.getThread(req, res);
 });
 
 module.exports = router;
