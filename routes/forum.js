@@ -3,8 +3,8 @@ var router = express.Router();
 var queries = require('../queries.js')
 
 /* GET users listing. */
-router.get('forum/:forumId', function(req, res) {
-  queries.getThread(req,res);
+router.get('/:forumId', function(req, res) {
+  queries.getThread(res);
 });
 
 module.exports = router;
