@@ -37,9 +37,10 @@ body{
 }
 
 .content-style{
+	padding: 15px 5px;
 	opacity: 1;
 	border: 1px solid black;
-	margin: 10px 5px;
+	margin: 10px;
 	border-radius: 5px;
 	color: #6BE4E3;
 	background-color:#2C164E;
