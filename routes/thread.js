@@ -4,11 +4,11 @@ var query = require('../queries.js');
 
 
 /* GET users listing. */
-router.get('/:forumId/:threadId', function(req, res, next) {
-  query.getThread(res);
+router.get('/:threadId', function(req, res, next) {
+  query.getPosts(req,res);
 });
 
-router.delete("/thread/:id", function(req, res) {
+router.delete("/:threadId", function(req, res) {
  	db.threads.destroy({
  		where: {
  			id: req.params.id
@@ -18,7 +18,7 @@ router.delete("/thread/:id", function(req, res) {
  	});
 });
 
-router.get("/:forumId/newthread", function(req, res){
+router.get("/newthread", function(req, res){
 	res.render("post", {newThread: true});
 });
 
