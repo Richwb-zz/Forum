@@ -51,8 +51,13 @@ function getForum(req, res){
 function getThread(req, res){
   var forumUrl = req.originalUrl.replace("/forum/","");
   var forumName = forumUrl.substring(0,forumUrl.lastIndexOf("-"));
- 
-  models.threads.findAll()
+  var forumId = forumUrl.substring(forumUrl.lastIndexOf("-")+1,forumUrl.length);
+  console.log(forumId)
+  models.threads.findAll({
+    where: {
+      forum_id: forumId
+    }
+  })
   .then(threads => {
 
     var allthreads = [];
@@ -68,22 +73,22 @@ function getThread(req, res){
   });
 };
 
-/*function getPost(res){
-  models.posts.findAll()
-  .then(posts => {
-    // console.log(threads);
-    var allposts = [];
-    var thispost;
-    for(var post in posts){
-        // Assign data Values to a var for cleaner handling
-        thispost = posts[post].dataValues;
-        allposts.push([thispost.post_id, thispost., thisthread.lastPoster, lastPostDate]);
-    }
+// function getPost(res){
+//   models.posts.findAll()
+//   .then(posts => {
+//     // console.log(threads);
+//     var allposts = [];
+//     var thispost;
+//     for(var post in posts){
+//         // Assign data Values to a var for cleaner handling
+//         thispost = posts[post].dataValues;
+//         allposts.push([thispost.post_id, thispost., thisthread.lastPoster, lastPostDate]);
+//     }
    
-    console.log("allthreads: " + allthreads)
-    res.render('index', {threads: allthreads});
-  });
-};*/
+//     console.log("allthreads: " + allthreads)
+//     res.render('index', {threads: allthreads});
+//   });
+// };
 
 function login(req, res){
   loginForm = req.body;
