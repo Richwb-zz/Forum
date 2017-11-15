@@ -57,10 +57,10 @@ function getThread(req, res){
         // Assign data Values to a var for cleaner handling
         thisthread = threads[thread].dataValues;
     
-        allthreads.push([thisthread.id, thisthread.thread_name, thisthread.last_poster, thisthread.last_post_date], originalUrl : req.originalUrl);
+        allthreads.push([thisthread.id, thisthread.thread_name, thisthread.last_poster, thisthread.last_post_date]);
     }
    
-    res.render('forum', {threads: allthreads});
+    res.render('forum', {threads: allthreads}, originalUrl : req.originalUrl);
   });
 };
 
