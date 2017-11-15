@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
 			defaultValue: DataTypes.UUIDV1,
 			allowNull: false
 		},
-		text: {
+		content: {
 			type: DataTypes.TEXT,
 			allowNull: false,
 			validate: {
@@ -32,12 +32,7 @@ module.exports = function(sequelize, DataTypes) {
 			}
 		});
 
-		posts.belongsTo(models.users, {
-			foreignKey: {
-				name: "created_by",
-				allowNull: false
-			}
-		});
+		posts.belongsTo(models.users);
 	}
 
 	return posts;
