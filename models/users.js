@@ -67,7 +67,12 @@ module.exports = function(sequelize, DataTypes) {
 
 	users.associate = function(models){
 		users.hasMany(models.threads);
-		users.hasMany(models.posts);
+		users.hasMany(models.posts, {
+			foreignKey: {
+				name: "created_by",
+				allowNull: false
+			}
+		});
 	}
 
 	users.prototype.validPassword = function(password){
