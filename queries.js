@@ -30,6 +30,8 @@ function getUser(num) {
   }; // end of Promise
 
 function getForum(req, res){
+  
+  
   models.forums.findAll()
   .then(forums => {
     
@@ -47,10 +49,12 @@ function getForum(req, res){
 };
 
 function getThread(req, res){
-  //console.log(res.  url.path   client);
+  var forumUrl = req.originalUrl.replace("/forum/","");
+  var forumName = forumUrl.substring(0,forumUrl.lastIndexOf("-"));
+ 
   models.threads.findAll()
   .then(threads => {
-    // console.log(threads);
+
     var allthreads = [];
     var thisthread;
     for(var thread in threads){
@@ -59,8 +63,8 @@ function getThread(req, res){
     
         allthreads.push([thisthread.id, thisthread.thread_name, thisthread.last_poster, thisthread.last_post_date]);
     }
-   
-    res.render('forum', {threads: allthreads, originalUrl : req.originalUrl});
+
+    res.render('forum', {threads: allthreads, originalUrl : req.originalUrl, forumName: forumName});
   });
 };
 
