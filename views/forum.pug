@@ -9,7 +9,7 @@ block content
 	each thread in threads
 		.content-style.card-body
 			.thread-title
-				a(href= originalUrl +"/thread/"+ thread[0]) #{thread[1]}
+				a(href= "/thread/"+ thread[1] + "-" + thread[0]) #{thread[1]}
 
 			.last-post.text-muted
 				span.colorG Last Poster: </span> #{thread[2]} &nbsp
