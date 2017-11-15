@@ -55,6 +55,8 @@ function getThread(res){
     for(var thread in threads){
         // Assign data Values to a var for cleaner handling
         thisthread = threads[thread].dataValues;
+        console.log("-------------------------------------------------")
+        console.log(thisthread);
         allthreads.push([thisthread.threadId, thisthread.threadName, thisthread.lastPoster, lastPostDate]);
     }
    
@@ -62,6 +64,23 @@ function getThread(res){
     res.render('index', {threads: allthreads});
   });
 };
+
+/*function getPost(res){
+  models.posts.findAll()
+  .then(posts => {
+    // console.log(threads);
+    var allposts = [];
+    var thispost;
+    for(var post in posts){
+        // Assign data Values to a var for cleaner handling
+        thispost = posts[post].dataValues;
+        allposts.push([thispost.post_id, thispost., thisthread.lastPoster, lastPostDate]);
+    }
+   
+    console.log("allthreads: " + allthreads)
+    res.render('index', {threads: allthreads});
+  });
+};*/
 
 function login(req, res){
   loginForm = req.body;
