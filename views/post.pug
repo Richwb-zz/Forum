@@ -1,9 +1,11 @@
 extends layout.pug
 
 block content
-	form(name="new_post",method="POST",action="/post")
-		if newThread
-			input(type="input",name="thread-name",value="",required="required")
-		input(type="textarea",name="post-content",value="",required="required")
-		input(type="submit",value="submit Post")
-	button(type="button") Cancel
+	.card.new-posts
+		.card-header
+			h4 Create New Post:
+		form(name="new_post",method="POST",action="/post")
+			if newThread
+				input(type="input",name="thread-name",value="",required="required")
+			textarea(name="post-content",value="",required="required",wrap="hard",id="txt-a")
+			input(type="submit",value="Create Post",class="subtmit-btn")

@@ -112,14 +112,11 @@ body{
 }
 
 .foot-style{
-	position: absolute;
-	bottom: 10px;
 
 	text-align: center;
-
 	width: 100%;
 	padding: 5px 15px;
-	margin-top: 10px;
+	margin: 10px 0px;
 	border: 2px solid #000;
 	border-radius: 5px;
 	background-color: #200D3E;

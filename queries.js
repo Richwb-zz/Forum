@@ -50,7 +50,7 @@ function getForum(req, res){
 
 function getThread(req, res){
   var forumUrl = req.originalUrl.replace("/forum/","");
-  var forumName = forumUrl.substring(0,forumUrl.lastIndexOf("-"));
+  var forumName = forumUrl.substring(0,forumUrl.lastIndexOf("-")).replace(/%20/g," ");
   var forumId = forumUrl.substring(forumUrl.lastIndexOf("-")+1,forumUrl.length);
   console.log(forumId)
   models.threads.findAll({
@@ -74,8 +74,8 @@ function getThread(req, res){
 };
 
  function getPost(req, res){
-  var threadUrl = req.originalUrl.replace("/forum/","");
-  var threadName = threadUrl.substring(0,threadUrl.lastIndexOf("-"));
+  var threadUrl = req.originalUrl.replace("/thread/","");
+  var threadName = threadUrl.substring(0,threadUrl.lastIndexOf("-")).replace(/%20/g," ");
   var threadId = threadUrl.substring(threadUrl.lastIndexOf("-")+1,threadUrl.length);
   console.log(threadId)
    models.posts.findAll({
