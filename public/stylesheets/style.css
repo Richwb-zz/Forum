@@ -80,9 +80,44 @@ body{
 .colorG{
 	color:#62D490;
 }
+.new-posts{
+	margin-top: 20px;
+}
+
+.post-ava{
+	padding: 2px;
+	border-radius: 2px;
+	border: solid black 2px; 
+	float:left; 
+	margin: 5px;
+	width: 75px;
+}
+.post-cont{
+
+}
+
+.subtmit-btn{
+	border-radius: 2px;
+}
+
+#txt-a{
+	border-radius: 3px;
+	margin-bottom: 10px;	
+	min-height: 50px;
+	max-height: 300px;
+	color: #C9D6FF;
+	background-color: #7782A6;
+	width: 100%;
+}
 
 .foot-style{
-	padding: 2px 15px;
+	position: absolute;
+	bottom: 10px;
+
+	text-align: center;
+
+	width: 100%;
+	padding: 5px 15px;
 	margin-top: 10px;
 	border: 2px solid #000;
 	border-radius: 5px;

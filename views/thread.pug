@@ -7,20 +7,26 @@ block content
 
 	each post in posts
 		.content-style.card-body
-			p #{post[2]}
-			.text-muted.last-post
-				p Posted by: #{post}
+
+			a(href="/profile/" + user)
+				img.post-ava(src="http://via.placeholder.com/200x200")
+
+
+			p.post-cont #{post[2]}
+
+			p.text-muted.last-post Posted by: #{post}
+					 
 	
 
-	.card
+	.card.new-posts
 		.card-header
 			h4 Create New Post:
 		form(name="new_post",method="POST",action="/post")
 			if newThread
 				input(type="input",name="thread-name",value="",required="required")
-			input(type="textarea",name="post-content",value="",required="required")
-			input(type="submit",value="submit Post")
-			button(type="button") Cancel
+			textarea(name="post-content",value="",required="required",wrap="hard",id="txt-a")
+			input(type="submit",value="Create Post",class="subtmit-btn")
+			
 	//- each post in posts
 	//- 	div(class=" postheader")
 	//- 		span #{post[postNum]}
