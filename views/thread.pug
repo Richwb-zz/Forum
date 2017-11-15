@@ -8,9 +8,10 @@ block content
 
 	each post in posts
 		.content-style.card-body
-			p Place Holder
-
-
+			p #{post[2]}
+			.text-muted.last-post
+				//- p Posted by: #{post}
+	
 	//- each post in posts
 	//- 	div(class=" postheader")
 	//- 		span #{post[postNum]}
