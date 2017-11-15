@@ -46,7 +46,8 @@ function getForum(req, res){
   });
 };
 
-function getThread(res){
+function getThread(req, res){
+  //console.log(res.  url.path   client);
   models.threads.findAll()
   .then(threads => {
     // console.log(threads);
@@ -56,7 +57,7 @@ function getThread(res){
         // Assign data Values to a var for cleaner handling
         thisthread = threads[thread].dataValues;
     
-        allthreads.push([thisthread.id, thisthread.thread_name, thisthread.last_poster, thisthread.last_post_date]);
+        allthreads.push([thisthread.id, thisthread.thread_name, thisthread.last_poster, thisthread.last_post_date], originalUrl : req.originalUrl);
     }
    
     res.render('forum', {threads: allthreads});
