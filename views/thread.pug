@@ -3,15 +3,24 @@ extends layout.pug
 block content
 	.card
 		.card-header
-			.card-title 
 			h3 Thread Title
 
 	each post in posts
 		.content-style.card-body
 			p #{post[2]}
 			.text-muted.last-post
-				//- p Posted by: #{post}
+				p Posted by: #{post}
 	
+
+	.card
+		.card-header
+			h4 Create New Post:
+		form(name="new_post",method="POST",action="/post")
+			if newThread
+				input(type="input",name="thread-name",value="",required="required")
+			input(type="textarea",name="post-content",value="",required="required")
+			input(type="submit",value="submit Post")
+			button(type="button") Cancel
 	//- each post in posts
 	//- 	div(class=" postheader")
 	//- 		span #{post[postNum]}
