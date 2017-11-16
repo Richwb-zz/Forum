@@ -7,7 +7,7 @@ block content
 			.card-title 
 			h2 Registration Page! </h2> Please fill out all forms.
 		.content-style.card-body
-			form(id="register",name="register-form",method="PUT",action="/register")
+			form(id="register",name="register-form")
 
 				label(for='first-name') &nbsp First Name: &nbsp
 				br
@@ -51,4 +51,4 @@ block content
 				br
 				br
 
-				input(type="submit",value="Submit Registration")
+				input(id ="registersubmit",type="submit",value="Submit Registration")
