@@ -2,32 +2,30 @@ var models = require("./models/index.js");
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
-
-
 function getUser(num) {
-    var userId = parseInt(num);
-    // Make query
-    if (user_id) {
-      models.users.findOne({
-        include: [{ profile: models.profiles }],
-        where: { uuid: user_id },
-      }).then((results) => {
-        if (!results) {
-          resolve({}); // if no user, return empty object not NULL
-        } else {
-          resolve(results);
-        }
-      }); 
-    } else {
-      models.users.findAll({}).then((results) => {
-        if (!results) {
-          resolve({}); // if no user, return empty object not NULL
-        } else {
-          resolve(results);
-        }
-      })
-    }
-  }; // end of Promise
+  var userId = parseInt(num);
+  // Make query
+  if (user_id) {
+    models.users.findOne({
+      include: [{ profile: models.profiles }],
+      where: { uuid: user_id },
+    }).then((results) => {
+      if (!results) {
+        resolve({}); // if no user, return empty object not NULL
+      } else {
+        resolve(results);
+      }
+    }); 
+  } else {
+    models.users.findAll({}).then((results) => {
+      if (!results) {
+        resolve({}); // if no user, return empty object not NULL
+      } else {
+        resolve(results);
+      }
+    })
+  }
+}; // end of Promise
 
 function getForum(req, res){
   
