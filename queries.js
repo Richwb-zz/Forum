@@ -50,7 +50,7 @@ function getThread(req, res){
   var forumUrl = req.originalUrl.replace("/forum/","");
   var forumName = forumUrl.substring(0,forumUrl.lastIndexOf("-")).replace(/%20/g," ");
   var forumId = forumUrl.substring(forumUrl.lastIndexOf("-")+1,forumUrl.length);
-  console.log(forumId)
+
   models.threads.findAll({
     where: {
       forum_id: forumId
@@ -75,7 +75,7 @@ function getThread(req, res){
   var threadUrl = req.originalUrl.replace("/thread/","");
   var threadName = threadUrl.substring(0,threadUrl.lastIndexOf("-")).replace(/%20/g," ");
   var threadId = threadUrl.substring(threadUrl.lastIndexOf("-")+1,threadUrl.length);
-  console.log(threadId)
+
    models.posts.findAll({
       include: [{
         model: models.users,
@@ -128,8 +128,11 @@ function login(req, res){
   });
 }
 
-function viewProfile(originalUrl,res){
-  var user = originalUrl.substring(originalUrl.lastIndexOf("/")+1, originalUrl.length);
+function viewProfile(req,res){
+  var url = req.originalUrl;
+  var user = url.substring(url.lastIndexOf("/")+1, url.length);
+  
+
   models.users.findOne({
     // include: [{
     //     model: models.profiles,
@@ -138,14 +141,47 @@ function viewProfile(originalUrl,res){
       username: user
     }
   })
-  .then(profile =>{
-    console.log(profile);
+  .then(profile => {
+    var user = req.session.user || "not logged in",
+    email = false,
+    fname = false,
+    lname = false;
+    var onlineStatus = checkUserOnline(req.sessionStore.sessions, user);
+
+    if(user){
+      if(user.uuid === profile.uuid){
+        fname = profile.firstname;
+        lname = profile.lastname;
+        email = profile.uuid;
+      }else{
+
+      }
+    }
+   
     res.render("profile", {
-      user    : username,
-      joined  : created_at,
-      email   : email
+      userName      : profile.username,
+      fname         : fname,
+      lname         : lname,
+      joined        : profile.created_at,
+      email         : email,
+      onlineStatus  : onlineStatus
     });
   });
+}
+
+function checkUserOnline(sessions, user){
+  console.log("##############################");
+  console.log(sessions);
+  for(var session in sessions){
+    var session = JSON.parse(sessions[session])
+
+    if(session.user){
+      if(session.user.username === user){
+        return true
+        break;
+      }
+    }
+  }
 }
 
 module.exports = {
