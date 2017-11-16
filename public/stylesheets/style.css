@@ -81,6 +81,16 @@ body{
 .colorG{
 	color:#62D490;
 }
+
+.new-thread{
+	position: relative;
+	left: 33%;
+	border-radius: 3px;
+	color: #C9D6FF;
+	background-color: #7782A6;
+	width: 200px;
+}
+
 .new-posts{
 	margin-top: 20px;
 }
@@ -120,5 +130,22 @@ body{
 	border: 2px solid #000;
 	border-radius: 5px;
 	background-color: #200D3E;
+
+}
+
+.online{
+	border: solid 1px black;
+	border-radius: 10px;
+	background-color: green;
+	width: 20px;
+	height: 20px;
+}
+
+.offline{
+	border: solid 1px black;
+	border-radius: 10px;
+	background-color: red;
+	width: 20px;
+	height: 20px;
 
 }
