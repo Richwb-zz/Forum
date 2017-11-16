@@ -90,7 +90,7 @@ function getThread(req, res){
      for(var post in posts){
          // Assign data Values to a var for cleaner handling
          thispost = posts[post].dataValues;
-         allposts.push([thispost.post_id, thispost.edited_by, thispost.content]);
+         allposts.push([thispost.post_id, thispost.edited_by, thispost.user_uuid, thispost.content]);
      }
    
      // console.log("allposts: " + allposts)
