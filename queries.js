@@ -128,10 +128,31 @@ function login(req, res){
   });
 }
 
+function viewProfile(originalUrl,res){
+  var user = originalUrl.substring(originalUrl.lastIndexOf("/")+1, originalUrl.length);
+  models.users.findOne({
+    // include: [{
+    //     model: models.profiles,
+    // }],
+    where:{
+      username: user
+    }
+  })
+  .then(profile =>{
+    console.log(profile);
+    res.render("profile", {
+      user    : username,
+      joined  : created_at,
+      email   : email
+    });
+  });
+}
+
 module.exports = {
-  getUser   : getUser,
-  getForum  : getForum,
-  getThread : getThread,
-  getPost   : getPost,
-  login     : login
+  getUser     : getUser,
+  getForum    : getForum,
+  getThread   : getThread,
+  getPost     : getPost,
+  login       : login,
+  viewProfile : viewProfile
 }
