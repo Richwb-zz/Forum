@@ -81,19 +81,22 @@ function getThread(req, res){
    models.posts.findAll({
       where: {
         thread_id: threadId
-      }
+      },
+      include: [{
+        model: models.users,
+        }]
    })
    .then(posts => {
- console.log(posts);
+    console.log(posts[0].dataValues.user);
      var allposts = [];
      var thispost;
      for(var post in posts){
          // Assign data Values to a var for cleaner handling
          thispost = posts[post].dataValues;
-         allposts.push([thispost.post_id, thispost.edited_by, thispost.content]);
+         allposts.push([thispost.post_id, thispost.edited_by, thispost.user_uuid, thispost.content]);
      }
    
-     console.log("allposts: " + allposts)
+     // console.log("allposts: " + allposts)
      res.render('thread', {posts: allposts, originalUrl : req.originalUrl, threadName: threadName});
    });
  };
