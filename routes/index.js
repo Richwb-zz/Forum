@@ -20,7 +20,12 @@ router.get("/signout", function(req, res) {
 });
 
 router.get("/register", function(req, res) {
-	res.render("register");
+	query.register(req, res);
+});
+
+router.put("/registersubmit", function(req, res) {
+	console.log(req.body);
+	//res.render("register");
 });
 
 router.get("/profile/:user", function(req, res) {
