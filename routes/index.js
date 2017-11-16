@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var query = require('../queries.js');
 var session = require('express-session');
+var register = require('../register.js');
 
 // Routes
 // =============================================================
@@ -20,12 +21,11 @@ router.get("/signout", function(req, res) {
 });
 
 router.get("/register", function(req, res) {
-	query.register(req, res);
+	res.render("register");
 });
 
 router.put("/registersubmit", function(req, res) {
-	console.log(req.body);
-	//res.render("register");
+	register.registrationCheck(req.body, res);
 });
 
 router.get("/profile/:user", function(req, res) {
