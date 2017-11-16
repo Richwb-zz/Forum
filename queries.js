@@ -79,15 +79,14 @@ function getThread(req, res){
   var threadId = threadUrl.substring(threadUrl.lastIndexOf("-")+1,threadUrl.length);
   console.log(threadId)
    models.posts.findAll({
+      include: [{
+        model: models.users,
+      }],
       where: {
         thread_id: threadId
       },
-      include: [{
-        model: models.users,
-        }]
    })
    .then(posts => {
-    console.log(posts[0].dataValues.user);
      var allposts = [];
      var thispost;
      for(var post in posts){
@@ -97,7 +96,7 @@ function getThread(req, res){
      }
    
      // console.log("allposts: " + allposts)
-     res.render('thread', {posts: allposts, originalUrl : req.originalUrl, threadName: threadName});
+     res.render('thread', {posts: allposts, originalUrl : req.originalUrl, threadName: threadName, username : posts[0].user.username});
    });
  };
 
