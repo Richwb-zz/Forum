@@ -29,7 +29,7 @@ router.put("/registersubmit", function(req, res) {
 });
 
 router.get("/profile/:user", function(req, res) {
-	query.viewProfile(req.originalUrl, res);
+	query.viewProfile(req, res);
 });
 
 
