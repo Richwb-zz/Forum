@@ -29,8 +29,8 @@ router.put("/registersubmit", function(req, res) {
 });
 
 router.get("/profile/:user", function(req, res) {
-	res.render("profile");
-})
+	query.viewProfile(req.originalUrl, res);
+});
 
 
 module.exports = router;
