@@ -13,6 +13,7 @@ router.delete("/:threadId", function(req, res) {
 });
 
 router.put("/submitpost", function(req, res){
+	console.log("===================");
 	queries.createPost(req,res);
 });
 

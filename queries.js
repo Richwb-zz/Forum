@@ -184,11 +184,68 @@ function checkUserOnline(sessions, user){
   }
 }
 
+function createPost(req, res){
+  var threadUrl = req.headers.referer;
+  var threadId = threadUrl.substring(threadUrl.lastIndexOf("-")+1,threadUrl.length);
+  models.posts.findOne({
+    where: {
+      thread_id : threadId
+    },
+    order: [
+      ['post_id', 'DESC']
+    ],
+    attributes: ['post_id']
+  }).then(id => {
+  models.posts.create({
+    post_id  : id.dataValues.post_id,
+    edited_by : req.session.user.uuid,
+    content : req.body.post,
+    thread_id : threadId,
+    user_uuid : req.session.user.uuid,
+    created_by : req.session.user.uuid
+  }).then(data => {
+    res.json(data);
+  }).catch(err => {
+    throw err;
+  })
+  });
+  }
+ 
+
+  // const post = models.posts.build({
+  //   post_id  : postInfo.post_id,
+  //   edited_by : req.session.user.uuid,
+  //   content : req.body.post,
+  //   thread_id : threadId,
+  //   user_uuid : req.session.user.uuid,
+  //   created_by : req.session.user.uuid
+  // });
+  // console.log(post);
+  // console.log("it got this far")
+  // post.save().then(data => {
+  //   console.log("something")
+  //   res.json(data);
+  // }).catch(error => {
+  //   console.log(error)
+  // });
+
+
+//function createThread(threadInfo){
+  //const thread = models.threads.build({
+    //thread_name  : threadInfo.thread_name,
+    //last_poster : threadInfo.last_poster,
+    //last_post_date : threadInfo.last_post_date,
+  //});
+
+  //thread.save();
+//}
+
 module.exports = {
   getUser     : getUser,
   getForum    : getForum,
   getThread   : getThread,
   getPost     : getPost,
   login       : login,
-  viewProfile : viewProfile
+  viewProfile : viewProfile,
+  createPost  : createPost
 }
