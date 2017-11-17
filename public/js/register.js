@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	console.log("test");
-	$("#registersubmit").on("click",function(event){
+	$("#registersubmit").on("click", function(event){
 		event.preventDefault();
 
 		var foo = {
@@ -19,4 +19,21 @@ $(document).ready(function(){
 			data: JSON.stringify(foo) 		 
 		});
 	});
+
+	$("#post-submit").on("click", function(event){
+		console.log("test");
+		event.preventDefault();
+		var foo = {
+			post: $("#txt-a").val()
+		}
+
+		$.ajax({
+			type: "put",
+			url: "/thread/submitpost",
+			contentType: "application/json",
+			data: JSON.stringify(foo)	 
+		});
+	});
+
+
 });
