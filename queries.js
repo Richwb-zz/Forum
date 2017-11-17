@@ -89,12 +89,13 @@ function getThread(req, res){
      var thispost;
      for(var post in posts){
          // Assign data Values to a var for cleaner handling
+         var onlineStatus = checkUserOnline(req.sessionStore.sessions, posts[0].user.username);
          thispost = posts[post].dataValues;
          allposts.push([thispost.post_id, thispost.edited_by, thispost.user_uuid, thispost.content]);
      }
    
      // console.log("allposts: " + allposts)
-     res.render('thread', {posts: allposts, originalUrl : req.originalUrl, threadName: threadName, username : posts[0].user.username});
+     res.render('thread', {posts: allposts, originalUrl : req.originalUrl, threadName: threadName, username : posts[0].user.username, online : onlineStatus});
    });
  };
 
@@ -170,8 +171,6 @@ function viewProfile(req,res){
 }
 
 function checkUserOnline(sessions, user){
-  console.log("##############################");
-  console.log(sessions);
   for(var session in sessions){
     var session = JSON.parse(sessions[session])
 
@@ -205,31 +204,13 @@ function createPost(req, res){
     created_by : req.session.user.uuid
   }).then(data => {
     res.json(data);
+    res.redirect("/" + threadUrl);
   }).catch(err => {
     throw err;
   })
   });
   }
  
-
-  // const post = models.posts.build({
-  //   post_id  : postInfo.post_id,
-  //   edited_by : req.session.user.uuid,
-  //   content : req.body.post,
-  //   thread_id : threadId,
-  //   user_uuid : req.session.user.uuid,
-  //   created_by : req.session.user.uuid
-  // });
-  // console.log(post);
-  // console.log("it got this far")
-  // post.save().then(data => {
-  //   console.log("something")
-  //   res.json(data);
-  // }).catch(error => {
-  //   console.log(error)
-  // });
-
-
 //function createThread(threadInfo){
   //const thread = models.threads.build({
     //thread_name  : threadInfo.thread_name,
