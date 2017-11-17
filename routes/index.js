@@ -17,7 +17,7 @@ router.post("/login", function(req, res) {
 
 router.get("/signout", function(req, res) {
 	req.session.destroy();
-	res.redirect("/");
+	res.redirect(req.headers.referer);
 });
 
 router.get("/register", function(req, res) {

@@ -13,31 +13,20 @@ block content
 					a(href="/profile/" + username)
 						img.post-ava(src="http://via.placeholder.com/200x200")
 						h5.name #{username}
+						if online
+							.online
+						else
+							.offline
 
 				.col-9
 					p.post-cont #{post[3]}
 					p.text-muted.last-post Posted by: #{username}
-
-	.card.new-posts
-		.card-header
-			h4 Create New Post:
-		form(name="new_post")
-			if newThread
-				input(type="input",name="thread-name",value="",required="required")
-			textarea(name="post-content",value="",required="required",wrap="hard",id="txt-a")
-			input(id="post-submit",type="submit",value="Create Post",class="subtmit-btn")
-			
-	//- each post in posts
-	//- 	div(class=" postheader")
-	//- 		span #{post[postNum]}
-	//- 	div(class="post")
-	//- 		div(class="poster-info")
-	//- 			span #{post[posterUN]}
-	//- 			span #{post[numofPost]}
-	//- 		div(class="post-content")
-	//- 			p #{post[content]}
-	//- 			div(class="post-footer")
-	//- 				span #{post[createDate]}
-					
-	//- 				if post[editdate]
-	//- 					span #{post[editDate]}
+	
+	if user
+		.card.new-posts
+			.card-header
+				h4 Create New Post:
+			form(name="new_post")
+				textarea(name="post-content",value="",required="required",wrap="hard",id="txt-a")
+				input(id="post-submit",type="submit",value="Create Post",class="subtmit-btn")
+	else
