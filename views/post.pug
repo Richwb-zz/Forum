@@ -6,6 +6,10 @@ block content
 			h4 Create New Post:
 		form(name="new_post",method="POST",action="/post")
 			if newThread
+				h2 Thread Title:
 				input(type="input",name="thread-name",value="",required="required")
+				h2 Thread Description:
+				input(type="input",name="thread-desc",value="",required="required")
+			h3 Post content:
 			textarea(name="post-content",value="",required="required",wrap="hard",id="txt-a")
 			input(id="post-submit",type="submit",value="Create Post",class="subtmit-btn")
