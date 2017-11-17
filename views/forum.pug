@@ -5,7 +5,8 @@ block content
 		.card-header
 			.card-title 
 			h3 #{forumName}
-		a(href="forum/newthread", class="new-thread btn") New Thread
+		if user
+			a(href="/forum/thread/newthread", class="new-thread btn") New Thread
 	each thread in threads
 		.content-style.card-body
 			.thread-title

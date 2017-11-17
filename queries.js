@@ -71,7 +71,7 @@ function getThread(req, res){
   });
 };
 
- function getPost(req, res){
+function getPost(req, res){
   var threadUrl = req.originalUrl.replace("/thread/","");
   var threadName = threadUrl.substring(0,threadUrl.lastIndexOf("-")).replace(/%20/g," ");
   var threadId = threadUrl.substring(threadUrl.lastIndexOf("-")+1,threadUrl.length);
@@ -183,6 +183,26 @@ function checkUserOnline(sessions, user){
   }
 }
 
+function createThread(req,res){
+  var forumUrl = req.body.forum; 
+  var forumId = forumUrl.substring(forumUrl.lastIndexOf("-")+1,forumUrl.length);
+
+  models.threads.create({
+    thread_name    : req.body.title,
+    last_poster    : req.session.user.uuid,
+    last_post_date : Date.now(),
+    forum_id       : forumId,
+    created_by     : req.session.user.uuid,
+    user_uuid      : req.session.user.uuid
+  }).then(data =>{
+    req.headers.referer = "/thread/" + req.body.title + "-" + data.dataValues.id;
+    createPost(req,res);
+  })
+  .catch(err => {
+    throw err;
+  }); 
+}
+
 function createPost(req, res){
   var threadUrl = req.headers.referer;
   var threadId = threadUrl.substring(threadUrl.lastIndexOf("-")+1,threadUrl.length);
@@ -195,31 +215,29 @@ function createPost(req, res){
     ],
     attributes: ['post_id']
   }).then(id => {
+    var postId;
+    if(id){
+      postId = id.dataValues.post_id;
+    }else{
+      postId = 1;
+    }
+
   models.posts.create({
-    post_id  : id.dataValues.post_id,
+    post_id  : postId,
     edited_by : req.session.user.uuid,
     content : req.body.post,
     thread_id : threadId,
     user_uuid : req.session.user.uuid,
     created_by : req.session.user.uuid
   }).then(data => {
-    res.json(data);
-    res.redirect("/" + threadUrl);
+    console.log(req.headers.referer);
+    res.send({redirect: req.headers.referer});
   }).catch(err => {
     throw err;
   })
   });
   }
  
-//function createThread(threadInfo){
-  //const thread = models.threads.build({
-    //thread_name  : threadInfo.thread_name,
-    //last_poster : threadInfo.last_poster,
-    //last_post_date : threadInfo.last_post_date,
-  //});
-
-  //thread.save();
-//}
 
 module.exports = {
   getUser     : getUser,
@@ -228,5 +246,6 @@ module.exports = {
   getPost     : getPost,
   login       : login,
   viewProfile : viewProfile,
-  createPost  : createPost
+  createPost  : createPost,
+  createThread : createThread
 }

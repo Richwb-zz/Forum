@@ -3,13 +3,10 @@ extends layout.pug
 block content
 	.card.new-posts
 		.card-header
-			h4 Create New Post:
-		form(name="new_post",method="POST",action="/post")
-			if newThread
+			h4 New Thread:
+		form(name="new_post",m)
 				h2 Thread Title:
-				input(type="input",name="thread-name",value="",required="required")
-				h2 Thread Description:
-				input(type="input",name="thread-desc",value="",required="required")
-			h3 Post content:
-			textarea(name="post-content",value="",required="required",wrap="hard",id="txt-a")
-			input(id="post-submit",type="submit",value="Create Post",class="subtmit-btn")
+				input(id="thread-title",type="input",name="thread-name",value="",required="required")
+				h3 Post content:
+				textarea(name="post-content",value="",required="required",wrap="hard",id="txt-a")
+				input(id="thread-submit",type="submit",value="Create Post",class="subtmit-btn")
