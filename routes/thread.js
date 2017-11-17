@@ -2,12 +2,6 @@ var express = require('express');
 var router = express.Router();
 var queries = require('../queries.js');
 
-
-/* GET users listing. */
-router.get('/:threadId', function(req, res, next) {
-  queries.getPost(req, res);
-});
-
 router.delete("/:threadId", function(req, res) {
  	db.threads.destroy({
  		where: {
@@ -18,8 +12,13 @@ router.delete("/:threadId", function(req, res) {
  	});
 });
 
-router.get("/newthread", function(req, res){
-	res.render("post", {newThread: true});
+router.put("/submitpost", function(req, res){
+	queries.createPost(req,res);
+});
+
+/* GET users listing. */
+router.get('/:threadId', function(req, res, next) {
+  queries.getPost(req, res);
 });
 
 module.exports = router;
