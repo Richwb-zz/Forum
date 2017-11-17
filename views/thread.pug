@@ -17,17 +17,15 @@ block content
 				.col-9
 					p.post-cont #{post[3]}
 					p.text-muted.last-post Posted by: #{username}
-					 
-	
 
 	.card.new-posts
 		.card-header
 			h4 Create New Post:
-		form(name="new_post",method="POST",action="/post")
+		form(name="new_post")
 			if newThread
 				input(type="input",name="thread-name",value="",required="required")
 			textarea(name="post-content",value="",required="required",wrap="hard",id="txt-a")
-			input(type="submit",value="Create Post",class="subtmit-btn")
+			input(id="post-submit",type="submit",value="Create Post",class="subtmit-btn")
 			
 	//- each post in posts
 	//- 	div(class=" postheader")
