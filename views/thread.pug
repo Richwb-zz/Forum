@@ -6,15 +6,17 @@ block content
 			h3 #{threadName}
 
 	each post in posts
+
 		.content-style.card-body
+			.row
+				.col-2.postr-box
+					a(href="/profile/" + username)
+						img.post-ava(src="http://via.placeholder.com/200x200")
+						h5.name #{username}
 
-			a(href="/profile/" + username)
-				img.post-ava(src="http://via.placeholder.com/200x200")
-
-
-			p.post-cont #{post[3]}
-
-			p.text-muted.last-post Posted by: #{username}
+				.col-9
+					p.post-cont #{post[3]}
+					p.text-muted.last-post Posted by: #{username}
 					 
 	
 
