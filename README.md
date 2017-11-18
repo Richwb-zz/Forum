@@ -6,4 +6,4 @@ Built on MySql, Sequelize, CSS HTML and Javascript
 
 More Content to come!
 
-By: Kevin Berry, Ritchard Bates, and Micheal DeVaney
+By: Kevin Berry, Richard Bates, and Michael Devaney
