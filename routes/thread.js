@@ -19,6 +19,7 @@ router.put("/submitpost", function(req, res){
 
 /* GET users listing. */
 router.get('/:threadId', function(req, res, next) {
+  console.log("test");
   queries.getPost(req, res);
 });
 

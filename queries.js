@@ -229,11 +229,12 @@ function createPost(req, res){
     thread_id : threadId,
     user_uuid : req.session.user.uuid,
     created_by : req.session.user.uuid
-  }).then(data => {
-    console.log(req.headers.referer);
-    res.send({redirect: req.headers.referer});
-  }).catch(err => {
+  })
+  .catch(err => {
     throw err;
+  })
+  .done(data =>{
+    res.redirect(303, req.headers.referer);
   })
   });
   }
